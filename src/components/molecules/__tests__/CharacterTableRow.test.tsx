@@ -1,0 +1,82 @@
+import { render, screen } from '@/test-utils/test-utils'
+import userEvent from '@testing-library/user-event'
+import { CharacterTableRow } from '../CharacterTableRow'
+import { mockCharacters } from '@/test-utils/mock-data'
+import '@testing-library/jest-dom'
+
+describe('CharacterTableRow', () => {
+  const mockOnClick = jest.fn()
+  const testCharacter = mockCharacters[0]
+
+  beforeEach(() => {
+    jest.clearAllMocks()
+  })
+
+  it('renders character data correctly', () => {
+    render(
+      <table>
+        <tbody>
+          <CharacterTableRow character={testCharacter} />
+        </tbody>
+      </table>
+    )
+
+    expect(screen.getByText(testCharacter.name)).toBeInTheDocument()
+    expect(screen.getByText(testCharacter.species)).toBeInTheDocument()
+    expect(screen.getByText(testCharacter.status)).toBeInTheDocument()
+    expect(screen.getByAltText(`${testCharacter.name} avatar`)).toBeInTheDocument()
+  })
+
+  it('renders status badge with correct variant styling', () => {
+    const { rerender } = render(
+      <table>
+        <tbody>
+          <CharacterTableRow character={{ ...testCharacter, status: 'Alive' }} />
+        </tbody>
+      </table>
+    )
+    expect(screen.getByText('Alive').closest('span')).toHaveClass('bg-emerald-100')
+
+    rerender(
+      <table>
+        <tbody>
+          <CharacterTableRow character={{ ...testCharacter, status: 'Dead' }} />
+        </tbody>
+      </table>
+    )
+    expect(screen.getByText('Dead').closest('span')).toHaveClass('bg-red-100')
+
+    rerender(
+      <table>
+        <tbody>
+          <CharacterTableRow character={{ ...testCharacter, status: 'unknown' }} />
+        </tbody>
+      </table>
+    )
+    expect(screen.getByText('unknown').closest('span')).toHaveClass('bg-zinc-100')
+  })
+
+  it('handles click and keyboard navigation with proper accessibility', async () => {
+    const user = userEvent.setup()
+    render(
+      <table>
+        <tbody>
+          <CharacterTableRow character={testCharacter} onClick={mockOnClick} />
+        </tbody>
+      </table>
+    )
+
+    const row = screen.getByText(testCharacter.name).closest('tr')
+    expect(row).toHaveAttribute('role', 'button')
+    expect(row).toHaveAttribute('tabindex', '0')
+
+    if (row) {
+      await user.click(row)
+      expect(mockOnClick).toHaveBeenCalledWith(testCharacter)
+
+      row.focus()
+      await user.keyboard('{Enter}')
+      expect(mockOnClick).toHaveBeenCalledTimes(2)
+    }
+  })
+})
