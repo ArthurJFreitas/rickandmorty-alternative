@@ -1,6 +1,6 @@
 # Rick and Morty Dashboard
 
-![Live Project](https://rickandmorty-alternative.vercel.app/)
+[Live Project](https://rickandmorty-alternative.vercel.app/)
 
 A modern, performant Next.js dashboard that consumes the Rick & Morty GraphQL API to display and search characters with infinite scrolling, interactive charts, and advanced filtering capabilities.
 
