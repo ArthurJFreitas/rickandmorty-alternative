@@ -11,6 +11,9 @@ afterEach(() => {
 global.IntersectionObserver = class IntersectionObserver {
   callback: IntersectionObserverCallback
   options: IntersectionObserverInit | undefined
+  root: Element | Document | null = null
+  rootMargin: string = '0px'
+  thresholds: ReadonlyArray<number> = [0]
 
   constructor(callback: IntersectionObserverCallback, options?: IntersectionObserverInit) {
     this.callback = callback
@@ -37,6 +40,8 @@ global.IntersectionObserver = class IntersectionObserver {
   unobserve() {}
 
   disconnect() {}
+
+  takeRecords() { return [] }
 } as unknown as typeof IntersectionObserver
 
 // Mock ResizeObserver
