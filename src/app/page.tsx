@@ -14,6 +14,7 @@ import Logo from '@/assets/logo.png'
 import Image from 'next/image'
 import { UsersThreeIcon, MapPinIcon, DatabaseIcon, FilesIcon, HeartIcon, UserIcon } from '@phosphor-icons/react/dist/ssr'
 import { CheckIcon } from '@phosphor-icons/react'
+import { parseAsString, useQueryState } from 'nuqs'
 
 const LocationChart = lazy(() => import('@/components/organisms/LocationChart').then(mod => ({ default: mod.LocationChart })))
 
@@ -45,8 +46,21 @@ function StatsCard({
 
 export default function Dashboard() {
   const router = useRouter()
-  const [statusFilter, setStatusFilter] = useState('all')
-  const [genderFilter, setGenderFilter] = useState('all')
+  const [statusFilter, setStatusFilter] = useQueryState(
+      'status',
+      parseAsString.withDefault('all').withOptions({
+        throttleMs: 300,
+        shallow: false,
+      })
+    )
+  const [genderFilter, setGenderFilter] = useQueryState(
+      'gender',
+      parseAsString.withDefault('all').withOptions({
+        throttleMs: 500,
+        shallow: false,
+      })
+    )
+
   const [showAllLocations, setShowAllLocations] = useState(false)
   const scrollContainerRef = useRef<HTMLDivElement>(null)
 
@@ -62,7 +76,7 @@ export default function Dashboard() {
     loadMoreError,
     hasNextPage,
   } = useCharacterSearch({
-    debounceDelay: 0,
+    debounceDelay: 300,
     minSearchLength: 0,
     status: statusFilter,
     gender: genderFilter,

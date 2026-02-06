@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import { ApolloProvider } from "@/services/graphql/provider";
+import { NuqsAdapter } from 'nuqs/adapters/next/app'
 import "./globals.css";
 
 const roboto = Roboto({
@@ -35,7 +36,9 @@ export default function RootLayout({
       <body
         className={`${roboto.variable} antialiased`}
       >
-        <ApolloProvider>{children}</ApolloProvider>
+        <NuqsAdapter>
+          <ApolloProvider>{children}</ApolloProvider>
+        </NuqsAdapter>
       </body>
     </html>
   );

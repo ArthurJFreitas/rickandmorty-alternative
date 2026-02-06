@@ -4,6 +4,7 @@ import { GET_CHARACTERS } from '@/services/graphql/queries/characters'
 import type { CharactersResponse, FilterCharacter } from '@/services/graphql/types'
 import { useDebounce } from './useDebounce'
 import { useAbortController } from './useAbortController'
+import { parseAsString, useQueryState } from 'nuqs'
 
 interface UseCharacterSearchOptions {
   debounceDelay?: number
@@ -40,7 +41,11 @@ export function useCharacterSearch(
     gender,
   } = options
 
-  const [query, setQuery] = useState('')
+  const [query, setQuery] = useQueryState('search', parseAsString.withDefault('').withOptions({
+      throttleMs: debounceDelay,
+      shallow: false,
+    }))
+
   const [loadMoreError, setLoadMoreError] = useState<Error | null>(null)
 
   const { debouncedValue: debouncedQuery, isDebouncing } = useDebounce(query, {
@@ -149,7 +154,7 @@ export function useCharacterSearch(
   const cancel = useCallback(() => {
     abort()
     setQuery('')
-  }, [abort])
+  }, [abort, setQuery])
 
   const retry = useCallback(() => {
     setLoadMoreError(null)
