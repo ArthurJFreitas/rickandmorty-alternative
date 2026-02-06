@@ -23,9 +23,9 @@ const chartContainerVariants = cva(
         ghost: 'border-transparent bg-transparent',
       },
       size: {
-        sm: 'h-[600px] h-[280px]',
+        sm: 'h-[600px] lg:h-[280px]',
         md: 'h-[600px] lg:h-[360px]',
-        lg: 'h-[600px] h-[420px]',
+        lg: 'h-[600px] lg:h-[420px]',
       },
     },
     defaultVariants: {
