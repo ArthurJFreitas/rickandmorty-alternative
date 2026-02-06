@@ -1,5 +1,6 @@
 import { render, screen } from '@/test-utils/test-utils'
 import userEvent from '@testing-library/user-event'
+import { vi } from 'vitest'
 import { ErrorBoundary } from '../ErrorBoundary'
 import '@testing-library/jest-dom'
 
@@ -13,7 +14,7 @@ function ThrowError({ shouldThrow }: { shouldThrow: boolean }) {
 describe('ErrorBoundary', () => {
   const originalError = console.error
   beforeAll(() => {
-    console.error = jest.fn()
+    console.error = vi.fn()
   })
 
   afterAll(() => {

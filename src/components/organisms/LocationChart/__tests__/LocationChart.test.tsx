@@ -1,9 +1,10 @@
 import { render, screen } from '@/test-utils/test-utils'
+import { vi } from 'vitest'
 import { LocationChart } from '../LocationChart'
 import { mockLocationData } from '@/test-utils/mock-data'
 
-jest.mock('recharts', () => {
-  const OriginalModule = jest.requireActual('recharts')
+vi.mock('recharts', async () => {
+  const OriginalModule = await vi.importActual('recharts')
   return {
     ...OriginalModule,
     ResponsiveContainer: ({ children }: { children: React.ReactNode }) => (

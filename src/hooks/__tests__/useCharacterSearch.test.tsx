@@ -5,6 +5,7 @@ import { ApolloClient, InMemoryCache } from '@apollo/client'
 import { ApolloProvider } from '@apollo/client/react'
 import { GET_CHARACTERS } from '@/services/graphql/queries/characters'
 import { ReactNode } from 'react'
+import { NuqsTestingAdapter } from 'nuqs/adapters/testing'
 
 const mockCharactersResponse = {
   characters: {
@@ -84,7 +85,11 @@ const createMockClient = (mocks: MockedResponse[]) => {
 const createWrapper = (mocks: MockedResponse[]) => {
   const client = createMockClient(mocks)
   return function Wrapper({ children }: { children: ReactNode }) {
-    return <ApolloProvider client={client}>{children}</ApolloProvider>
+    return (
+      <NuqsTestingAdapter>
+        <ApolloProvider client={client}>{children}</ApolloProvider>
+      </NuqsTestingAdapter>
+    )
   }
 }
 

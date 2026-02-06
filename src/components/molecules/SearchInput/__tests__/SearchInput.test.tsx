@@ -1,12 +1,13 @@
 import { render, screen } from '@/test-utils/test-utils'
 import userEvent from '@testing-library/user-event'
+import { vi } from 'vitest'
 import { SearchInput } from '../SearchInput'
 
 describe('SearchInput', () => {
-  const mockOnValueChange = jest.fn()
+  const mockOnValueChange = vi.fn()
 
   beforeEach(() => {
-    jest.clearAllMocks()
+    vi.clearAllMocks()
   })
 
   it('renders search input with placeholder', () => {

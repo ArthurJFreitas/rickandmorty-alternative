@@ -2,6 +2,7 @@ import React, { ReactElement } from 'react'
 import { render, RenderOptions } from '@testing-library/react'
 import { MockedProvider } from '@apollo/client/testing/react'
 import type { MockLink } from '@apollo/client/testing'
+import { NuqsTestingAdapter } from 'nuqs/adapters/testing'
 
 interface AllTheProvidersProps {
   children: React.ReactNode
@@ -10,9 +11,11 @@ interface AllTheProvidersProps {
 
 function AllTheProviders({ children, mocks = [] }: AllTheProvidersProps) {
   return (
-    <MockedProvider mocks={mocks}>
-      {children}
-    </MockedProvider>
+    <NuqsTestingAdapter>
+      <MockedProvider mocks={mocks}>
+        {children}
+      </MockedProvider>
+    </NuqsTestingAdapter>
   )
 }
 

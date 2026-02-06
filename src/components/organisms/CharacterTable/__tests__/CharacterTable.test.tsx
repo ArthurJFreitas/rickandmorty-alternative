@@ -1,14 +1,15 @@
 import { render, screen } from '@/test-utils/test-utils'
 import userEvent from '@testing-library/user-event'
+import { vi } from 'vitest'
 import { CharacterTable } from '../CharacterTable'
 import { mockCharacters } from '@/test-utils/mock-data'
 import '@testing-library/jest-dom'
 
 describe('CharacterTable', () => {
-  const mockOnRowClick = jest.fn()
+  const mockOnRowClick = vi.fn()
 
   beforeEach(() => {
-    jest.clearAllMocks()
+    vi.clearAllMocks()
   })
 
   it('renders table with characters', () => {

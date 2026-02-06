@@ -1,5 +1,6 @@
 import { render, screen } from '@/test-utils/test-utils'
 import userEvent from '@testing-library/user-event'
+import { vi } from 'vitest'
 import { Button } from '../Button'
 
 describe('Button', () => {
@@ -13,7 +14,7 @@ describe('Button', () => {
 
   it('handles loading and disabled states', async () => {
     const user = userEvent.setup()
-    const handleClick = jest.fn()
+    const handleClick = vi.fn()
 
     const { rerender } = render(<Button isLoading onClick={handleClick}>Submit</Button>)
     expect(screen.getAllByText(/loading/i).length).toBeGreaterThan(0)

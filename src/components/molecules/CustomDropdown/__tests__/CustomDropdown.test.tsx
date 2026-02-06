@@ -1,5 +1,6 @@
 import { render, screen, within } from '@/test-utils/test-utils'
 import userEvent from '@testing-library/user-event'
+import { vi } from 'vitest'
 import { CustomDropdown } from '../CustomDropdown'
 import '@testing-library/jest-dom'
 
@@ -10,10 +11,10 @@ describe('CustomDropdown', () => {
     { value: 'option2', label: 'Option 2' },
   ]
 
-  const mockOnValueChange = jest.fn()
+  const mockOnValueChange = vi.fn()
 
   beforeEach(() => {
-    jest.clearAllMocks()
+    vi.clearAllMocks()
   })
 
   it('opens dropdown and displays all options', async () => {

@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`CharacterTable integration: data fetching → rendering matches snapshot after data loads 1`] = `
+exports[`CharacterTable integration: data fetching → rendering > matches snapshot after data loads 1`] = `
 <div
   class="w-full overflow-hidden rounded-2xl border bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800"
 >
@@ -45,6 +45,7 @@ exports[`CharacterTable integration: data fetching → rendering matches snapsho
         </tr>
       </thead>
       <tbody
+        aria-live="polite"
         class="divide-y divide-zinc-100 dark:divide-zinc-800"
       >
         <tr
@@ -75,7 +76,7 @@ exports[`CharacterTable integration: data fetching → rendering matches snapsho
                   decoding="async"
                   height="44"
                   loading="lazy"
-                  src="http://localhost/_next/image?url=https%3A%2F%2Frickandmortyapi.com%2Fapi%2Fcharacter%2Favatar%2F1.jpeg&w=96&q=75"
+                  src="http://localhost:3000/_next/image?url=https%3A%2F%2Frickandmortyapi.com%2Fapi%2Fcharacter%2Favatar%2F1.jpeg&w=96&q=75"
                   srcset="/_next/image?url=https%3A%2F%2Frickandmortyapi.com%2Fapi%2Fcharacter%2Favatar%2F1.jpeg&w=48&q=75 1x, /_next/image?url=https%3A%2F%2Frickandmortyapi.com%2Fapi%2Fcharacter%2Favatar%2F1.jpeg&w=96&q=75 2x"
                   style="color: transparent;"
                   width="44"
@@ -167,7 +168,7 @@ exports[`CharacterTable integration: data fetching → rendering matches snapsho
                   decoding="async"
                   height="44"
                   loading="lazy"
-                  src="http://localhost/_next/image?url=https%3A%2F%2Frickandmortyapi.com%2Fapi%2Fcharacter%2Favatar%2F2.jpeg&w=96&q=75"
+                  src="http://localhost:3000/_next/image?url=https%3A%2F%2Frickandmortyapi.com%2Fapi%2Fcharacter%2Favatar%2F2.jpeg&w=96&q=75"
                   srcset="/_next/image?url=https%3A%2F%2Frickandmortyapi.com%2Fapi%2Fcharacter%2Favatar%2F2.jpeg&w=48&q=75 1x, /_next/image?url=https%3A%2F%2Frickandmortyapi.com%2Fapi%2Fcharacter%2Favatar%2F2.jpeg&w=96&q=75 2x"
                   style="color: transparent;"
                   width="44"
@@ -259,7 +260,7 @@ exports[`CharacterTable integration: data fetching → rendering matches snapsho
                   decoding="async"
                   height="44"
                   loading="lazy"
-                  src="http://localhost/_next/image?url=https%3A%2F%2Frickandmortyapi.com%2Fapi%2Fcharacter%2Favatar%2F3.jpeg&w=96&q=75"
+                  src="http://localhost:3000/_next/image?url=https%3A%2F%2Frickandmortyapi.com%2Fapi%2Fcharacter%2Favatar%2F3.jpeg&w=96&q=75"
                   srcset="/_next/image?url=https%3A%2F%2Frickandmortyapi.com%2Fapi%2Fcharacter%2Favatar%2F3.jpeg&w=48&q=75 1x, /_next/image?url=https%3A%2F%2Frickandmortyapi.com%2Fapi%2Fcharacter%2Favatar%2F3.jpeg&w=96&q=75 2x"
                   style="color: transparent;"
                   width="44"
@@ -351,7 +352,7 @@ exports[`CharacterTable integration: data fetching → rendering matches snapsho
                   decoding="async"
                   height="44"
                   loading="lazy"
-                  src="http://localhost/_next/image?url=https%3A%2F%2Frickandmortyapi.com%2Fapi%2Fcharacter%2Favatar%2F4.jpeg&w=96&q=75"
+                  src="http://localhost:3000/_next/image?url=https%3A%2F%2Frickandmortyapi.com%2Fapi%2Fcharacter%2Favatar%2F4.jpeg&w=96&q=75"
                   srcset="/_next/image?url=https%3A%2F%2Frickandmortyapi.com%2Fapi%2Fcharacter%2Favatar%2F4.jpeg&w=48&q=75 1x, /_next/image?url=https%3A%2F%2Frickandmortyapi.com%2Fapi%2Fcharacter%2Favatar%2F4.jpeg&w=96&q=75 2x"
                   style="color: transparent;"
                   width="44"
@@ -443,7 +444,7 @@ exports[`CharacterTable integration: data fetching → rendering matches snapsho
                   decoding="async"
                   height="44"
                   loading="lazy"
-                  src="http://localhost/_next/image?url=https%3A%2F%2Frickandmortyapi.com%2Fapi%2Fcharacter%2Favatar%2F5.jpeg&w=96&q=75"
+                  src="http://localhost:3000/_next/image?url=https%3A%2F%2Frickandmortyapi.com%2Fapi%2Fcharacter%2Favatar%2F5.jpeg&w=96&q=75"
                   srcset="/_next/image?url=https%3A%2F%2Frickandmortyapi.com%2Fapi%2Fcharacter%2Favatar%2F5.jpeg&w=48&q=75 1x, /_next/image?url=https%3A%2F%2Frickandmortyapi.com%2Fapi%2Fcharacter%2Favatar%2F5.jpeg&w=96&q=75 2x"
                   style="color: transparent;"
                   width="44"

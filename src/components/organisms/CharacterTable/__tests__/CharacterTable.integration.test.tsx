@@ -1,9 +1,11 @@
 import { screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { vi } from 'vitest'
 import { MockLink, MockedResponse } from '@apollo/client/testing'
 import { ApolloClient, InMemoryCache } from '@apollo/client'
 import { ApolloProvider } from '@apollo/client/react'
 import { render } from '@testing-library/react'
+import { NuqsTestingAdapter } from 'nuqs/adapters/testing'
 import { CharacterTable } from '../CharacterTable'
 import { useCharacterSearch } from '@/hooks/useCharacterSearch'
 import { GET_CHARACTERS } from '@/services/graphql/queries/characters'
@@ -59,7 +61,11 @@ function CharacterTableWithData({
 
 function renderWithApollo(mocks: MockedResponse[], ui: React.ReactElement) {
   const client = createMockClient(mocks)
-  return render(<ApolloProvider client={client}>{ui}</ApolloProvider>)
+  return render(
+    <NuqsTestingAdapter>
+      <ApolloProvider client={client}>{ui}</ApolloProvider>
+    </NuqsTestingAdapter>
+  )
 }
 
 describe('CharacterTable integration: data fetching → rendering', () => {
@@ -183,7 +189,7 @@ describe('CharacterTable integration: data fetching → rendering', () => {
   })
 
   it('passes the clicked character to the onRowClick handler', async () => {
-    const handleRowClick = jest.fn()
+    const handleRowClick = vi.fn()
     renderWithApollo(
       defaultMocks,
       <CharacterTableWithData onRowClick={handleRowClick} />
