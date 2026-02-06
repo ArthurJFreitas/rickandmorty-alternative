@@ -3,6 +3,8 @@ import { Roboto } from "next/font/google";
 import { ApolloProvider } from "@/services/graphql/provider";
 import { NuqsAdapter } from 'nuqs/adapters/next/app'
 import "./globals.css";
+import { Suspense } from "react";
+import { Spinner } from "@/components/atoms/Spinner/Spinner";
 
 const roboto = Roboto({
   variable: "--font-roboto",
@@ -37,7 +39,9 @@ export default function RootLayout({
         className={`${roboto.variable} antialiased`}
       >
         <NuqsAdapter>
-          <ApolloProvider>{children}</ApolloProvider>
+          <Suspense fallback={<div className="flex items-center justify-center p-6"><Spinner size="lg" label="Loading characters" /></div>}>
+            <ApolloProvider>{children}</ApolloProvider>
+            </Suspense>
         </NuqsAdapter>
       </body>
     </html>
