@@ -127,7 +127,7 @@ export function CharacterTable({
               ))}
             </tr>
           </thead>
-          <tbody className="divide-y divide-zinc-100 dark:divide-zinc-800">
+          <tbody aria-live="polite" className="divide-y divide-zinc-100 dark:divide-zinc-800">
             {characters.map((character) => (
               <CharacterTableRow
                 key={character.id}
