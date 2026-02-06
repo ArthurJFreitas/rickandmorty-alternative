@@ -1,0 +1,537 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`CharacterTable integration: data fetching → rendering matches snapshot after data loads 1`] = `
+<div
+  class="w-full overflow-hidden rounded-2xl border bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800"
+>
+  <div
+    class="table-scroll scroll-fade max-h-150 overflow-auto rounded-lg"
+  >
+    <table
+      class="w-full"
+    >
+      <thead
+        class="sticky top-0 z-10 bg-zinc-50 dark:bg-zinc-800/90 backdrop-blur"
+      >
+        <tr>
+          <th
+            class="px-4 py-4 text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 text-center"
+          />
+          <th
+            class="px-4 py-4 text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 text-left"
+          >
+            Name
+          </th>
+          <th
+            class="px-4 py-4 text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 text-left"
+          >
+            Status
+          </th>
+          <th
+            class="px-4 py-4 text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 text-left hidden lg:table-cell"
+          >
+            Gender
+          </th>
+          <th
+            class="px-4 py-4 text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 text-left hidden lg:table-cell"
+          >
+            Origin
+          </th>
+          <th
+            class="px-4 py-4 text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 text-left hidden lg:table-cell"
+          >
+            Last Location
+          </th>
+        </tr>
+      </thead>
+      <tbody
+        class="divide-y divide-zinc-100 dark:divide-zinc-800"
+      >
+        <tr
+          class="group transition-colors hover:bg-zinc-50 dark:hover:bg-zinc-800/50"
+        >
+          <td
+            class="px-4 py-4 text-center"
+          >
+            <div
+              class="flex items-center justify-center"
+            >
+              <div
+                class="relative h-11 w-11 text-base"
+              >
+                <div
+                  class="absolute inset-0 flex items-center justify-center rounded-full bg-zinc-200 dark:bg-zinc-700 animate-pulse h-11 w-11 text-base"
+                >
+                  <span
+                    class="text-xs text-zinc-400"
+                  >
+                    R
+                  </span>
+                </div>
+                <img
+                  alt="Rick Sanchez avatar"
+                  class="rounded-full object-cover ring-2 ring-zinc-100 dark:ring-zinc-800 transition-all h-11 w-11 text-base opacity-0"
+                  data-nimg="1"
+                  decoding="async"
+                  height="44"
+                  loading="lazy"
+                  src="http://localhost/_next/image?url=https%3A%2F%2Frickandmortyapi.com%2Fapi%2Fcharacter%2Favatar%2F1.jpeg&w=96&q=75"
+                  srcset="/_next/image?url=https%3A%2F%2Frickandmortyapi.com%2Fapi%2Fcharacter%2Favatar%2F1.jpeg&w=48&q=75 1x, /_next/image?url=https%3A%2F%2Frickandmortyapi.com%2Fapi%2Fcharacter%2Favatar%2F1.jpeg&w=96&q=75 2x"
+                  style="color: transparent;"
+                  width="44"
+                />
+              </div>
+            </div>
+          </td>
+          <td
+            class="px-4 py-4 text-left"
+          >
+            <div>
+              <div
+                class="font-semibold text-zinc-900 dark:text-zinc-100"
+              >
+                Rick Sanchez
+              </div>
+              <div
+                class="text-sm text-zinc-500 dark:text-zinc-400"
+              >
+                Human
+              </div>
+            </div>
+          </td>
+          <td
+            class="px-4 py-4 text-left"
+          >
+            <span
+              class="inline-flex items-center gap-1.5 rounded-full font-medium transition-colors bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-400 px-2 py-0.5 text-xs"
+            >
+              <span
+                class="h-1.5 w-1.5 rounded-full bg-emerald-500"
+              />
+              Alive
+            </span>
+          </td>
+          <td
+            class="px-4 py-4 text-left hidden lg:table-cell"
+          >
+            <span
+              class="text-zinc-600 dark:text-zinc-400"
+            >
+              Male
+            </span>
+          </td>
+          <td
+            class="px-4 py-4 text-left hidden lg:table-cell"
+          >
+            <span
+              class="text-zinc-600 dark:text-zinc-400"
+            >
+              Earth (C-137)
+            </span>
+          </td>
+          <td
+            class="px-4 py-4 text-left hidden lg:table-cell"
+          >
+            <span
+              class="text-zinc-600 dark:text-zinc-400"
+            >
+              Earth (Replacement Dimension)
+            </span>
+          </td>
+        </tr>
+        <tr
+          class="group transition-colors hover:bg-zinc-50 dark:hover:bg-zinc-800/50"
+        >
+          <td
+            class="px-4 py-4 text-center"
+          >
+            <div
+              class="flex items-center justify-center"
+            >
+              <div
+                class="relative h-11 w-11 text-base"
+              >
+                <div
+                  class="absolute inset-0 flex items-center justify-center rounded-full bg-zinc-200 dark:bg-zinc-700 animate-pulse h-11 w-11 text-base"
+                >
+                  <span
+                    class="text-xs text-zinc-400"
+                  >
+                    M
+                  </span>
+                </div>
+                <img
+                  alt="Morty Smith avatar"
+                  class="rounded-full object-cover ring-2 ring-zinc-100 dark:ring-zinc-800 transition-all h-11 w-11 text-base opacity-0"
+                  data-nimg="1"
+                  decoding="async"
+                  height="44"
+                  loading="lazy"
+                  src="http://localhost/_next/image?url=https%3A%2F%2Frickandmortyapi.com%2Fapi%2Fcharacter%2Favatar%2F2.jpeg&w=96&q=75"
+                  srcset="/_next/image?url=https%3A%2F%2Frickandmortyapi.com%2Fapi%2Fcharacter%2Favatar%2F2.jpeg&w=48&q=75 1x, /_next/image?url=https%3A%2F%2Frickandmortyapi.com%2Fapi%2Fcharacter%2Favatar%2F2.jpeg&w=96&q=75 2x"
+                  style="color: transparent;"
+                  width="44"
+                />
+              </div>
+            </div>
+          </td>
+          <td
+            class="px-4 py-4 text-left"
+          >
+            <div>
+              <div
+                class="font-semibold text-zinc-900 dark:text-zinc-100"
+              >
+                Morty Smith
+              </div>
+              <div
+                class="text-sm text-zinc-500 dark:text-zinc-400"
+              >
+                Human
+              </div>
+            </div>
+          </td>
+          <td
+            class="px-4 py-4 text-left"
+          >
+            <span
+              class="inline-flex items-center gap-1.5 rounded-full font-medium transition-colors bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-400 px-2 py-0.5 text-xs"
+            >
+              <span
+                class="h-1.5 w-1.5 rounded-full bg-emerald-500"
+              />
+              Alive
+            </span>
+          </td>
+          <td
+            class="px-4 py-4 text-left hidden lg:table-cell"
+          >
+            <span
+              class="text-zinc-600 dark:text-zinc-400"
+            >
+              Male
+            </span>
+          </td>
+          <td
+            class="px-4 py-4 text-left hidden lg:table-cell"
+          >
+            <span
+              class="text-zinc-600 dark:text-zinc-400"
+            >
+              Earth (C-137)
+            </span>
+          </td>
+          <td
+            class="px-4 py-4 text-left hidden lg:table-cell"
+          >
+            <span
+              class="text-zinc-600 dark:text-zinc-400"
+            >
+              Earth (Replacement Dimension)
+            </span>
+          </td>
+        </tr>
+        <tr
+          class="group transition-colors hover:bg-zinc-50 dark:hover:bg-zinc-800/50"
+        >
+          <td
+            class="px-4 py-4 text-center"
+          >
+            <div
+              class="flex items-center justify-center"
+            >
+              <div
+                class="relative h-11 w-11 text-base"
+              >
+                <div
+                  class="absolute inset-0 flex items-center justify-center rounded-full bg-zinc-200 dark:bg-zinc-700 animate-pulse h-11 w-11 text-base"
+                >
+                  <span
+                    class="text-xs text-zinc-400"
+                  >
+                    S
+                  </span>
+                </div>
+                <img
+                  alt="Summer Smith avatar"
+                  class="rounded-full object-cover ring-2 ring-zinc-100 dark:ring-zinc-800 transition-all h-11 w-11 text-base opacity-0"
+                  data-nimg="1"
+                  decoding="async"
+                  height="44"
+                  loading="lazy"
+                  src="http://localhost/_next/image?url=https%3A%2F%2Frickandmortyapi.com%2Fapi%2Fcharacter%2Favatar%2F3.jpeg&w=96&q=75"
+                  srcset="/_next/image?url=https%3A%2F%2Frickandmortyapi.com%2Fapi%2Fcharacter%2Favatar%2F3.jpeg&w=48&q=75 1x, /_next/image?url=https%3A%2F%2Frickandmortyapi.com%2Fapi%2Fcharacter%2Favatar%2F3.jpeg&w=96&q=75 2x"
+                  style="color: transparent;"
+                  width="44"
+                />
+              </div>
+            </div>
+          </td>
+          <td
+            class="px-4 py-4 text-left"
+          >
+            <div>
+              <div
+                class="font-semibold text-zinc-900 dark:text-zinc-100"
+              >
+                Summer Smith
+              </div>
+              <div
+                class="text-sm text-zinc-500 dark:text-zinc-400"
+              >
+                Human
+              </div>
+            </div>
+          </td>
+          <td
+            class="px-4 py-4 text-left"
+          >
+            <span
+              class="inline-flex items-center gap-1.5 rounded-full font-medium transition-colors bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-400 px-2 py-0.5 text-xs"
+            >
+              <span
+                class="h-1.5 w-1.5 rounded-full bg-emerald-500"
+              />
+              Alive
+            </span>
+          </td>
+          <td
+            class="px-4 py-4 text-left hidden lg:table-cell"
+          >
+            <span
+              class="text-zinc-600 dark:text-zinc-400"
+            >
+              Female
+            </span>
+          </td>
+          <td
+            class="px-4 py-4 text-left hidden lg:table-cell"
+          >
+            <span
+              class="text-zinc-600 dark:text-zinc-400"
+            >
+              Earth (C-137)
+            </span>
+          </td>
+          <td
+            class="px-4 py-4 text-left hidden lg:table-cell"
+          >
+            <span
+              class="text-zinc-600 dark:text-zinc-400"
+            >
+              Earth (Replacement Dimension)
+            </span>
+          </td>
+        </tr>
+        <tr
+          class="group transition-colors hover:bg-zinc-50 dark:hover:bg-zinc-800/50"
+        >
+          <td
+            class="px-4 py-4 text-center"
+          >
+            <div
+              class="flex items-center justify-center"
+            >
+              <div
+                class="relative h-11 w-11 text-base"
+              >
+                <div
+                  class="absolute inset-0 flex items-center justify-center rounded-full bg-zinc-200 dark:bg-zinc-700 animate-pulse h-11 w-11 text-base"
+                >
+                  <span
+                    class="text-xs text-zinc-400"
+                  >
+                    B
+                  </span>
+                </div>
+                <img
+                  alt="Beth Smith avatar"
+                  class="rounded-full object-cover ring-2 ring-zinc-100 dark:ring-zinc-800 transition-all h-11 w-11 text-base opacity-0"
+                  data-nimg="1"
+                  decoding="async"
+                  height="44"
+                  loading="lazy"
+                  src="http://localhost/_next/image?url=https%3A%2F%2Frickandmortyapi.com%2Fapi%2Fcharacter%2Favatar%2F4.jpeg&w=96&q=75"
+                  srcset="/_next/image?url=https%3A%2F%2Frickandmortyapi.com%2Fapi%2Fcharacter%2Favatar%2F4.jpeg&w=48&q=75 1x, /_next/image?url=https%3A%2F%2Frickandmortyapi.com%2Fapi%2Fcharacter%2Favatar%2F4.jpeg&w=96&q=75 2x"
+                  style="color: transparent;"
+                  width="44"
+                />
+              </div>
+            </div>
+          </td>
+          <td
+            class="px-4 py-4 text-left"
+          >
+            <div>
+              <div
+                class="font-semibold text-zinc-900 dark:text-zinc-100"
+              >
+                Beth Smith
+              </div>
+              <div
+                class="text-sm text-zinc-500 dark:text-zinc-400"
+              >
+                Human
+              </div>
+            </div>
+          </td>
+          <td
+            class="px-4 py-4 text-left"
+          >
+            <span
+              class="inline-flex items-center gap-1.5 rounded-full font-medium transition-colors bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-400 px-2 py-0.5 text-xs"
+            >
+              <span
+                class="h-1.5 w-1.5 rounded-full bg-emerald-500"
+              />
+              Alive
+            </span>
+          </td>
+          <td
+            class="px-4 py-4 text-left hidden lg:table-cell"
+          >
+            <span
+              class="text-zinc-600 dark:text-zinc-400"
+            >
+              Female
+            </span>
+          </td>
+          <td
+            class="px-4 py-4 text-left hidden lg:table-cell"
+          >
+            <span
+              class="text-zinc-600 dark:text-zinc-400"
+            >
+              Earth (C-137)
+            </span>
+          </td>
+          <td
+            class="px-4 py-4 text-left hidden lg:table-cell"
+          >
+            <span
+              class="text-zinc-600 dark:text-zinc-400"
+            >
+              Earth (Replacement Dimension)
+            </span>
+          </td>
+        </tr>
+        <tr
+          class="group transition-colors hover:bg-zinc-50 dark:hover:bg-zinc-800/50"
+        >
+          <td
+            class="px-4 py-4 text-center"
+          >
+            <div
+              class="flex items-center justify-center"
+            >
+              <div
+                class="relative h-11 w-11 text-base"
+              >
+                <div
+                  class="absolute inset-0 flex items-center justify-center rounded-full bg-zinc-200 dark:bg-zinc-700 animate-pulse h-11 w-11 text-base"
+                >
+                  <span
+                    class="text-xs text-zinc-400"
+                  >
+                    J
+                  </span>
+                </div>
+                <img
+                  alt="Jerry Smith avatar"
+                  class="rounded-full object-cover ring-2 ring-zinc-100 dark:ring-zinc-800 transition-all h-11 w-11 text-base opacity-0"
+                  data-nimg="1"
+                  decoding="async"
+                  height="44"
+                  loading="lazy"
+                  src="http://localhost/_next/image?url=https%3A%2F%2Frickandmortyapi.com%2Fapi%2Fcharacter%2Favatar%2F5.jpeg&w=96&q=75"
+                  srcset="/_next/image?url=https%3A%2F%2Frickandmortyapi.com%2Fapi%2Fcharacter%2Favatar%2F5.jpeg&w=48&q=75 1x, /_next/image?url=https%3A%2F%2Frickandmortyapi.com%2Fapi%2Fcharacter%2Favatar%2F5.jpeg&w=96&q=75 2x"
+                  style="color: transparent;"
+                  width="44"
+                />
+              </div>
+            </div>
+          </td>
+          <td
+            class="px-4 py-4 text-left"
+          >
+            <div>
+              <div
+                class="font-semibold text-zinc-900 dark:text-zinc-100"
+              >
+                Jerry Smith
+              </div>
+              <div
+                class="text-sm text-zinc-500 dark:text-zinc-400"
+              >
+                Human
+              </div>
+            </div>
+          </td>
+          <td
+            class="px-4 py-4 text-left"
+          >
+            <span
+              class="inline-flex items-center gap-1.5 rounded-full font-medium transition-colors bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-400 px-2 py-0.5 text-xs"
+            >
+              <span
+                class="h-1.5 w-1.5 rounded-full bg-emerald-500"
+              />
+              Alive
+            </span>
+          </td>
+          <td
+            class="px-4 py-4 text-left hidden lg:table-cell"
+          >
+            <span
+              class="text-zinc-600 dark:text-zinc-400"
+            >
+              Male
+            </span>
+          </td>
+          <td
+            class="px-4 py-4 text-left hidden lg:table-cell"
+          >
+            <span
+              class="text-zinc-600 dark:text-zinc-400"
+            >
+              Earth (C-137)
+            </span>
+          </td>
+          <td
+            class="px-4 py-4 text-left hidden lg:table-cell"
+          >
+            <span
+              class="text-zinc-600 dark:text-zinc-400"
+            >
+              Earth (Replacement Dimension)
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div
+      class="flex items-center justify-center border-t border-zinc-100 py-6 dark:border-zinc-800"
+    >
+      <div
+        class="flex items-center justify-center"
+        role="status"
+      >
+        <div
+          aria-hidden="true"
+          class="animate-spin rounded-full border-emerald-600 border-t-transparent h-4 w-4 border-2"
+        />
+        <span
+          class="sr-only"
+        >
+          Loading more characters
+        </span>
+      </div>
+      <span
+        class="ml-3 text-sm text-zinc-500 dark:text-zinc-400"
+      >
+        Loading more…
+      </span>
+    </div>
+  </div>
+</div>
+`;
