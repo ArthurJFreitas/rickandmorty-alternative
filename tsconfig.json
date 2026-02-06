@@ -29,6 +29,6 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts"
-, "src/hooks/useLocations.tsxx", "src/hooks/useOptimizedCharacterSearch.tx"  ],
+  ],
   "exclude": ["node_modules"]
 }

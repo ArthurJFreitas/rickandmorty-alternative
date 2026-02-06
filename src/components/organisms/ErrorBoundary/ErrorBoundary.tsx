@@ -162,9 +162,7 @@ export function InlineError({
   )
 }
 
-/**
- * Network Error Display
- */
+
 export function NetworkError({
   onRetry,
   message = 'Failed to load data. Please check your connection.',

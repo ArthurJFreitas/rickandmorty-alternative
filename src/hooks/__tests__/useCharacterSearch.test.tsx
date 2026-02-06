@@ -1,6 +1,8 @@
 import { renderHook, waitFor, act } from '@testing-library/react'
 import { useCharacterSearch } from '../useCharacterSearch'
-import { MockedProvider } from '@apollo/client/testing/react'
+import { MockLink, MockedResponse } from '@apollo/client/testing'
+import { ApolloClient, InMemoryCache } from '@apollo/client'
+import { ApolloProvider } from '@apollo/client/react'
 import { GET_CHARACTERS } from '@/services/graphql/queries/characters'
 import { ReactNode } from 'react'
 
@@ -51,12 +53,47 @@ const mockEmptyResponse = {
   },
 }
 
+const mockNoMorePagesResponse = {
+  characters: {
+    info: {
+      count: 2,
+      pages: 1,
+      next: null,
+      prev: null,
+    },
+    results: mockCharactersResponse.characters.results,
+  },
+}
+
+const createMockClient = (mocks: MockedResponse[]) => {
+  const mockLink = new MockLink(mocks, { showWarnings: false })
+  return new ApolloClient({
+    link: mockLink,
+    cache: new InMemoryCache(),
+    defaultOptions: {
+      watchQuery: {
+        fetchPolicy: 'no-cache',
+      },
+      query: {
+        fetchPolicy: 'no-cache',
+      },
+    },
+  })
+}
+
+const createWrapper = (mocks: MockedResponse[]) => {
+  const client = createMockClient(mocks)
+  return function Wrapper({ children }: { children: ReactNode }) {
+    return <ApolloProvider client={client}>{children}</ApolloProvider>
+  }
+}
+
 describe('useCharacterSearch', () => {
-  const mocks = [
+  const mocks: MockedResponse[] = [
     {
       request: {
         query: GET_CHARACTERS,
-        variables: { page: 1, filter: undefined },
+        variables: { page: 1 },
       },
       result: {
         data: mockCharactersResponse,
@@ -64,11 +101,7 @@ describe('useCharacterSearch', () => {
     },
   ]
 
-  const wrapper = ({ children }: { children: ReactNode }) => (
-    <MockedProvider mocks={mocks}>
-      {children}
-    </MockedProvider>
-  )
+  const wrapper = createWrapper(mocks)
 
   it('initializes with correct default state', () => {
     const { result } = renderHook(() => useCharacterSearch(), { wrapper })
@@ -115,24 +148,18 @@ describe('useCharacterSearch', () => {
   })
 
   it('handles query errors', async () => {
-    const errorMocks = [
+    const errorMocks: MockedResponse[] = [
       {
         request: {
           query: GET_CHARACTERS,
-          variables: { page: 1, filter: undefined },
+          variables: { page: 1 },
         },
         error: new Error('Network error'),
       },
     ]
 
-    const errorWrapper = ({ children }: { children: ReactNode }) => (
-      <MockedProvider mocks={errorMocks} >
-        {children}
-      </MockedProvider>
-    )
-
     const { result } = renderHook(() => useCharacterSearch(), {
-      wrapper: errorWrapper,
+      wrapper: createWrapper(errorMocks),
     })
 
     await waitFor(
@@ -146,11 +173,11 @@ describe('useCharacterSearch', () => {
   })
 
   it('handles empty results', async () => {
-    const emptyMocks = [
+    const emptyMocks: MockedResponse[] = [
       {
         request: {
           query: GET_CHARACTERS,
-          variables: { page: 1, filter: undefined },
+          variables: { page: 1 },
         },
         result: {
           data: mockEmptyResponse,
@@ -158,14 +185,8 @@ describe('useCharacterSearch', () => {
       },
     ]
 
-    const emptyWrapper = ({ children }: { children: ReactNode }) => (
-      <MockedProvider mocks={emptyMocks}>
-        {children}
-      </MockedProvider>
-    )
-
     const { result } = renderHook(() => useCharacterSearch(), {
-      wrapper: emptyWrapper,
+      wrapper: createWrapper(emptyMocks),
     })
 
     await waitFor(() => {
@@ -185,5 +206,161 @@ describe('useCharacterSearch', () => {
 
     expect(result.current.loadMore).toBeDefined()
     expect(typeof result.current.loadMore).toBe('function')
+  })
+
+  it('applies status filter correctly', async () => {
+    const statusMocks: MockedResponse[] = [
+      {
+        request: {
+          query: GET_CHARACTERS,
+          variables: { page: 1, filter: { status: 'Alive' } },
+        },
+        result: {
+          data: mockCharactersResponse,
+        },
+      },
+    ]
+
+    const { result } = renderHook(
+      () => useCharacterSearch({ status: 'Alive' }),
+      { wrapper: createWrapper(statusMocks) }
+    )
+
+    await waitFor(() => {
+      expect(result.current.isLoading).toBe(false)
+    })
+
+    expect(result.current.characters).toHaveLength(2)
+  })
+
+  it('applies gender filter correctly', async () => {
+    const genderMocks: MockedResponse[] = [
+      {
+        request: {
+          query: GET_CHARACTERS,
+          variables: { page: 1, filter: { gender: 'Male' } },
+        },
+        result: {
+          data: mockCharactersResponse,
+        },
+      },
+    ]
+
+    const { result } = renderHook(
+      () => useCharacterSearch({ gender: 'Male' }),
+      { wrapper: createWrapper(genderMocks) }
+    )
+
+    await waitFor(() => {
+      expect(result.current.isLoading).toBe(false)
+    })
+
+    expect(result.current.characters).toHaveLength(2)
+  })
+
+  it('ignores "all" filter values', async () => {
+    const allFilterMocks: MockedResponse[] = [
+      {
+        request: {
+          query: GET_CHARACTERS,
+          variables: { page: 1 },
+        },
+        result: {
+          data: mockCharactersResponse,
+        },
+      },
+    ]
+
+    const { result } = renderHook(
+      () => useCharacterSearch({ status: 'all', gender: 'all' }),
+      { wrapper: createWrapper(allFilterMocks) }
+    )
+
+    await waitFor(() => {
+      expect(result.current.isLoading).toBe(false)
+    })
+
+    expect(result.current.characters).toHaveLength(2)
+  })
+
+  it('cancel clears query and aborts', async () => {
+    const { result } = renderHook(() => useCharacterSearch(), { wrapper })
+
+    act(() => {
+      result.current.setQuery('Rick')
+    })
+
+    expect(result.current.query).toBe('Rick')
+
+    act(() => {
+      result.current.cancel()
+    })
+
+    expect(result.current.query).toBe('')
+  })
+
+  it('hasNextPage is false when no more pages available', async () => {
+    const noMorePagesMocks: MockedResponse[] = [
+      {
+        request: {
+          query: GET_CHARACTERS,
+          variables: { page: 1 },
+        },
+        result: {
+          data: mockNoMorePagesResponse,
+        },
+      },
+    ]
+
+    const { result } = renderHook(
+      () => useCharacterSearch(),
+      { wrapper: createWrapper(noMorePagesMocks) }
+    )
+
+    await waitFor(() => {
+      expect(result.current.isLoading).toBe(false)
+    })
+
+    expect(result.current.hasNextPage).toBe(false)
+  })
+
+  it('respects enabled option', async () => {
+    const { result } = renderHook(
+      () => useCharacterSearch({ enabled: false }),
+      { wrapper }
+    )
+
+    expect(result.current.isLoading).toBe(false)
+    expect(result.current.characters).toEqual([])
+  })
+
+  it('retry function is callable', async () => {
+    const { result } = renderHook(() => useCharacterSearch(), { wrapper })
+
+    expect(typeof result.current.retry).toBe('function')
+
+    act(() => {
+      result.current.retry()
+    })
+  })
+
+  it('uses custom debounce delay', async () => {
+    const { result } = renderHook(
+      () => useCharacterSearch({ debounceDelay: 500 }),
+      { wrapper }
+    )
+
+    act(() => {
+      result.current.setQuery('test')
+    })
+
+    expect(result.current.isDebouncing).toBe(true)
+
+    await waitFor(
+      () => {
+        expect(result.current.debouncedQuery).toBe('test')
+      },
+      { timeout: 600 }
+    )
   })
 })

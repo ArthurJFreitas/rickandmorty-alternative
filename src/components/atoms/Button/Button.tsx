@@ -3,7 +3,7 @@
 import { type ButtonHTMLAttributes, type ReactNode } from 'react'
 import { cva, type VariantProps } from 'class-variance-authority'
 import { cn } from '@/lib/utils/style'
-import { Spinner } from './Spinner'
+import { Spinner } from '@/components/atoms/Spinner'
 
 const buttonVariants = cva(
   'inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:cursor-not-allowed dark:focus:ring-offset-zinc-900',

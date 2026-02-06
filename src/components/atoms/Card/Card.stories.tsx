@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { Card, CardHeader, CardTitle, CardDescription } from './Card'
-import { Button } from './Button'
-import { Badge } from './Badge'
+import { Button } from '@/components/atoms/Button'
+import { Badge } from '@/components/atoms/Badge'
 
 const meta = {
   title: 'Atoms/Card',
@@ -128,9 +128,7 @@ export const StatCard: Story = {
     children: (
       <div className="flex items-center gap-4">
         <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-100 text-emerald-600 dark:bg-emerald-950 dark:text-emerald-400">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-          </svg>
+          <p className="text-sm text-zinc-500 dark:text-zinc-400">Total Characters</p>
         </div>
         <div>
           <p className="text-sm text-zinc-500 dark:text-zinc-400">Total Characters</p>
