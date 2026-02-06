@@ -86,7 +86,7 @@ export function CharacterTable({
   if (isLoading && characters.length === 0) {
     return (
       <div className={cn(tableVariants({ variant }), 'flex items-center justify-center py-16', className)}>
-        <div className="text-center">
+        <div className="flex min-h-80 flex-col justify-center items-center text-center">
           <Spinner size="lg" label="Loading characters" />
           <p className="mt-4 text-sm text-zinc-500 dark:text-zinc-400">
             Loading characters…
@@ -98,7 +98,7 @@ export function CharacterTable({
 
   if (characters.length === 0) {
     return (
-      <div className={cn(tableVariants({ variant }), 'flex flex-col items-center justify-center py-16', className)}>
+      <div className={cn(tableVariants({ variant }), 'flex flex-col items-center justify-center py-16 min-h-40', className)}>
         <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-zinc-100 dark:bg-zinc-800">
           <MagnifyingGlassIcon size={32} weight="duotone" className="text-zinc-400 dark:text-zinc-500" />
         </div>
