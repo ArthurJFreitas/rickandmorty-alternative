@@ -8,10 +8,10 @@ import { Badge } from '@/components/atoms/Badge'
 import { Button } from '@/components/atoms/Button'
 import { Spinner } from '@/components/atoms/Spinner'
 import { InlineError } from '@/components/organisms/ErrorBoundary'
-import { cn } from '@/lib/utils/style'
 import type { Character } from '@/services/graphql/types'
 import Image from 'next/image'
 import { ArrowLeftIcon, MapPinIcon, GlobeHemisphereWestIcon, TelevisionSimpleIcon, InfoIcon } from '@phosphor-icons/react/dist/ssr'
+import styles from './page.module.css'
 
 interface CharacterByIdResponse {
   character: Character & {
@@ -48,10 +48,10 @@ export default function CharacterDetailPage() {
 
   if (loading) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-linear-to-br from-zinc-950 via-zinc-950 to-zinc-900">
-        <div className="text-center">
+      <div className={styles.centered}>
+        <div>
           <Spinner size="lg" label="Loading character" />
-          <p className="mt-4 text-zinc-400">
+          <p className={styles.centeredText}>
             Loading character details...
           </p>
         </div>
@@ -61,10 +61,10 @@ export default function CharacterDetailPage() {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-linear-to-br from-zinc-950 to-zinc-900 p-8">
-        <div className="mx-auto max-w-2xl">
+      <div className={styles.errorWrapper}>
+        <div className={styles.errorInner}>
           <InlineError error={error} onRetry={() => refetch()} />
-          <div className="mt-4 text-center">
+          <div className={styles.errorActions}>
             <Button onClick={() => router.push('/')} variant="ghost">
               ← Back to Characters
             </Button>
@@ -76,13 +76,13 @@ export default function CharacterDetailPage() {
 
   if (!character) {
     return (
-      <div className="min-h-screen bg-linear-to-br from-zinc-950 to-zinc-900 p-8">
-        <div className="mx-auto max-w-2xl text-center">
-          <div className="rounded-2xl border border-zinc-800 bg-zinc-900 p-8">
-            <h2 className="mb-2 text-xl font-bold text-zinc-100">
+      <div className={styles.errorWrapper}>
+        <div className={styles.errorInner}>
+          <div className={styles.notFoundCard}>
+            <h2 className={styles.notFoundTitle}>
               Character Not Found
             </h2>
-            <p className="mb-4 text-zinc-400">
+            <p className={styles.notFoundText}>
               The character you&apos;re looking for doesn&apos;t exist.
             </p>
             <Button onClick={() => router.push('/')} variant="primary">
@@ -95,14 +95,14 @@ export default function CharacterDetailPage() {
   }
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-zinc-950 via-zinc-950 to-zinc-900">
-      <header className="border-b border-zinc-800/80 bg-zinc-900/80 backdrop-blur-lg">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+    <div className={styles.page}>
+      <header className={styles.header}>
+        <div className={styles.headerInner}>
           <Button
             onClick={() => router.push('/')}
             variant="ghost"
             size="sm"
-            className="text-zinc-400 hover:text-zinc-100"
+            className={styles.backButton}
           >
             <ArrowLeftIcon size={16} weight="bold" />
             Back to Characters
@@ -110,39 +110,40 @@ export default function CharacterDetailPage() {
         </div>
       </header>
 
-      <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-        <div className="grid gap-8 lg:grid-cols-3">
-          <div className="lg:col-span-1">
-            <Card variant="elevated" padding="lg" className="sticky top-8">
-              <div className="mb-6">
+      <main className={styles.main}>
+        <div className={styles.layout}>
+          <div className={styles.sidebarWrap}>
+            <Card variant="elevated" padding="lg" className={styles.sidebar}>
+              <div className={styles.imageWrap}>
                 <Image
                   src={character.image}
                   alt={character.name}
                   width={300}
                   height={400}
-                  className="h-full w-full rounded-xl object-cover shadow-lg"
+                  className={styles.characterImage}
                 />
               </div>
 
-              <h1 className="mb-2 text-3xl font-bold text-zinc-100">
+              <h1 className={styles.characterName}>
                 {character.name}
               </h1>
 
-              <div className="mb-4 flex items-center gap-2">
+              <div className={styles.statusRow}>
                 <Badge variant={statusVariants[character.status]} size="lg">
                   <span
-                    className={cn(
-                      'h-2 w-2 rounded-full',
-                      character.status === 'Alive' && 'bg-emerald-500',
-                      character.status === 'Dead' && 'bg-red-500',
-                      character.status === 'unknown' && 'bg-zinc-400'
-                    )}
+                    className={`${styles.statusDot} ${
+                      character.status === 'Alive'
+                        ? styles.statusAlive
+                        : character.status === 'Dead'
+                        ? styles.statusDead
+                        : styles.statusUnknown
+                    }`}
                   />
                   {character.status}
                 </Badge>
               </div>
 
-              <div className="space-y-3 border-t border-zinc-800 pt-4">
+              <div className={styles.infoGroup}>
                 <InfoRow label="Species" value={character.species} />
                 {character.type && <InfoRow label="Type" value={character.type} />}
                 <InfoRow label="Gender" value={character.gender} />
@@ -150,47 +151,47 @@ export default function CharacterDetailPage() {
             </Card>
           </div>
 
-          <div className="space-y-6 lg:col-span-2">
+          <div className={styles.content}>
             <Card variant="elevated" padding="lg">
-              <CardHeader className="mb-4">
-                <CardTitle className="flex items-center gap-2">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-950 text-blue-400">
+              <CardHeader className={styles.cardHeader}>
+                <CardTitle className={styles.titleRow}>
+                  <div className={styles.iconBadge}>
                     <MapPinIcon size={20} weight="duotone" />
                   </div>
                   Location Information
                 </CardTitle>
               </CardHeader>
 
-              <div className="space-y-4">
-                <div className="rounded-lg border border-zinc-800 bg-zinc-900 p-4">
-                  <div className="mb-2 flex items-center gap-2">
-                    <GlobeHemisphereWestIcon size={16} weight="duotone" className="text-blue-400" />
-                    <h3 className="text-sm font-semibold uppercase tracking-wider text-zinc-400">
+              <div className={styles.sectionList}>
+                <div className={styles.sectionCard}>
+                  <div className={styles.sectionHeaderRow}>
+                    <GlobeHemisphereWestIcon size={16} weight="duotone" />
+                    <h3 className={styles.sectionHeaderLabel}>
                       Origin
                     </h3>
                   </div>
-                  <p className="text-lg font-medium text-zinc-100">
+                  <p className={styles.sectionValue}>
                     {character.origin.name}
                   </p>
                   {character.origin.dimension && (
-                    <p className="mt-1 text-sm text-zinc-400">
+                    <p className={styles.sectionSubValue}>
                       {character.origin.dimension}
                     </p>
                   )}
                 </div>
 
-                <div className="rounded-lg border border-zinc-800 bg-zinc-900 p-4">
-                  <div className="mb-2 flex items-center gap-2">
-                    <MapPinIcon size={16} weight="duotone" className="text-blue-400" />
-                    <h3 className="text-sm font-semibold uppercase tracking-wider text-zinc-400">
+                <div className={styles.sectionCard}>
+                  <div className={styles.sectionHeaderRow}>
+                    <MapPinIcon size={16} weight="duotone" />
+                    <h3 className={styles.sectionHeaderLabel}>
                       Last Known Location
                     </h3>
                   </div>
-                  <p className="text-lg font-medium text-zinc-100">
+                  <p className={styles.sectionValue}>
                     {character.location.name}
                   </p>
                   {character.location.dimension && (
-                    <p className="mt-1 text-sm text-zinc-400">
+                    <p className={styles.sectionSubValue}>
                       {character.location.dimension}
                     </p>
                   )}
@@ -200,25 +201,25 @@ export default function CharacterDetailPage() {
 
             {character.episode && character.episode.length > 0 && (
               <Card variant="elevated" padding="lg">
-                <CardHeader className="mb-4">
-                  <CardTitle className="flex items-center gap-2">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-purple-950 text-purple-400">
+                <CardHeader className={styles.cardHeader}>
+                  <CardTitle className={styles.titleRow}>
+                    <div className={`${styles.iconBadge} ${styles.iconBadgePurple}`}>
                       <TelevisionSimpleIcon size={20} weight="duotone" />
                     </div>
                     Episodes ({character.episode.length})
                   </CardTitle>
                 </CardHeader>
 
-                <div className="grid gap-3 sm:grid-cols-2">
+                <div className={styles.episodesGrid}>
                   {character.episode.slice(0, 10).map((episode) => (
                     <div
                       key={episode.id}
-                      className="rounded-lg border border-zinc-800 bg-zinc-900 p-3"
+                      className={styles.episodeCard}
                     >
-                      <div className="mb-1 text-xs font-semibold text-emerald-400">
+                      <div className={styles.episodeCode}>
                         {episode.episode}
                       </div>
-                      <div className="text-sm font-medium text-zinc-100">
+                      <div className={styles.episodeName}>
                         {episode.name}
                       </div>
                     </div>
@@ -226,7 +227,7 @@ export default function CharacterDetailPage() {
                 </div>
 
                 {character.episode.length > 10 && (
-                  <p className="mt-4 text-sm text-zinc-400">
+                  <p className={styles.moreEpisodes}>
                     + {character.episode.length - 10} more episodes
                   </p>
                 )}
@@ -234,16 +235,16 @@ export default function CharacterDetailPage() {
             )}
 
             <Card variant="elevated" padding="lg">
-              <CardHeader className="mb-4">
-                <CardTitle className="flex items-center gap-2">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-amber-950 text-amber-400">
+              <CardHeader className={styles.cardHeader}>
+                <CardTitle className={styles.titleRow}>
+                  <div className={`${styles.iconBadge} ${styles.iconBadgeAmber}`}>
                     <InfoIcon size={20} weight="duotone" />
                   </div>
                   Metadata
                 </CardTitle>
               </CardHeader>
 
-              <div className="space-y-2 text-sm">
+              <div className={styles.metaList}>
                 <InfoRow label="Character ID" value={character.id} />
                 <InfoRow
                   label="Created"
@@ -264,11 +265,11 @@ export default function CharacterDetailPage() {
 
 function InfoRow({ label, value }: { label: string; value: string }) {
   return (
-    <div className="flex items-center justify-between">
-      <span className="text-sm font-medium text-zinc-400">
+    <div className={styles.infoRow}>
+      <span className={styles.infoLabel}>
         {label}
       </span>
-      <span className="text-sm font-semibold text-zinc-100">
+      <span className={styles.infoValue}>
         {value}
       </span>
     </div>

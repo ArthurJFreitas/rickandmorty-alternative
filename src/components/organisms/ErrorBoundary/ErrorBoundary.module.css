@@ -1,0 +1,174 @@
+.fullscreen {
+  display: flex;
+  min-height: 400px;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+}
+
+.cardWrap {
+  width: 100%;
+  max-width: 420px;
+}
+
+.card {
+  border-radius: 16px;
+  border: 1px solid #7f1d1d;
+  background: #450a0a;
+  padding: 32px;
+  box-shadow: 0 12px 24px rgba(9, 9, 11, 0.4);
+}
+
+.iconRow {
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.iconCircle {
+  display: flex;
+  height: 64px;
+  width: 64px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: #7f1d1d;
+}
+
+.iconDanger {
+  color: #f87171;
+}
+
+.title {
+  margin-bottom: 8px;
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fee2e2;
+}
+
+.message {
+  margin-bottom: 16px;
+  text-align: center;
+  font-size: 0.875rem;
+  color: #fecaca;
+}
+
+.details {
+  margin-bottom: 16px;
+  border-radius: 12px;
+  background: #7f1d1d;
+  padding: 12px;
+}
+
+.summary {
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #fecaca;
+}
+
+.stack {
+  margin-top: 8px;
+  overflow: auto;
+  font-size: 0.75rem;
+  color: #fecaca;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.ghostDanger {
+  color: #fecaca;
+}
+
+.ghostDanger:hover {
+  background: #7f1d1d;
+}
+
+.inlineCard {
+  border-radius: 12px;
+  border: 1px solid #7f1d1d;
+  background: #450a0a;
+  padding: 24px;
+}
+
+.inlineRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.inlineTitle {
+  margin-bottom: 4px;
+  font-weight: 600;
+  color: #fee2e2;
+}
+
+.inlineText {
+  font-size: 0.875rem;
+  color: #fecaca;
+}
+
+.inlineRetry {
+  margin-top: 12px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #f87171;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.inlineRetry:hover {
+  color: #fecaca;
+}
+
+.networkWrapper {
+  display: flex;
+  min-height: 300px;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+}
+
+.networkCenter {
+  text-align: center;
+}
+
+.networkIconWrap {
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.networkIcon {
+  display: flex;
+  height: 64px;
+  width: 64px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: #27272a;
+  color: #a1a1aa;
+}
+
+.networkTitle {
+  margin-bottom: 8px;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #f4f4f5;
+}
+
+.networkMessage {
+  margin-bottom: 16px;
+  font-size: 0.875rem;
+  color: #a1a1aa;
+}

@@ -52,18 +52,18 @@ export const WithLabel: Story = {
 export const AllSizes: Story = {
   args: {} as any,
   render: () => (
-    <div className="flex gap-8 items-center">
-      <div className="flex flex-col items-center gap-2">
+    <div style={{ display: 'flex', gap: 32, alignItems: 'center' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}>
         <Spinner size="sm" />
-        <span className="text-xs text-zinc-500 dark:text-zinc-400">Small</span>
+        <span style={{ fontSize: 12, color: '#a1a1aa' }}>Small</span>
       </div>
-      <div className="flex flex-col items-center gap-2">
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}>
         <Spinner size="md" />
-        <span className="text-xs text-zinc-500 dark:text-zinc-400">Medium</span>
+        <span style={{ fontSize: 12, color: '#a1a1aa' }}>Medium</span>
       </div>
-      <div className="flex flex-col items-center gap-2">
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}>
         <Spinner size="lg" />
-        <span className="text-xs text-zinc-500 dark:text-zinc-400">Large</span>
+        <span style={{ fontSize: 12, color: '#a1a1aa' }}>Large</span>
       </div>
     </div>
   ),
@@ -72,7 +72,7 @@ export const AllSizes: Story = {
 export const InButton: Story = {
   args: {} as any,
   render: () => (
-    <button className="inline-flex items-center gap-2 rounded-lg bg-emerald-600 px-4 py-2 text-white hover:bg-emerald-700">
+    <button style={{ display: 'inline-flex', alignItems: 'center', gap: 8, borderRadius: 8, background: '#10b981', padding: '8px 16px', color: '#fff', border: 'none' }}>
       <Spinner size="sm" />
       Loading...
     </button>
@@ -82,7 +82,7 @@ export const InButton: Story = {
 export const FullPageLoading: Story = {
   args: {} as any,
   render: () => (
-    <div className="flex h-64 w-full items-center justify-center bg-zinc-950 rounded-lg">
+    <div style={{ display: 'flex', height: 256, width: '100%', alignItems: 'center', justifyContent: 'center', background: '#0a0a0a', borderRadius: 12 }}>
       <Spinner size="lg" label="Loading content..." />
     </div>
   ),

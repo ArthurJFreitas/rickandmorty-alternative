@@ -36,7 +36,7 @@ describe('CharacterTableRow', () => {
         </tbody>
       </table>
     )
-    expect(screen.getByText('Alive').closest('span')).toHaveClass('bg-emerald-100')
+    expect(screen.getByTestId('status-dot')).toHaveAttribute('data-status', 'Alive')
 
     rerender(
       <table>
@@ -45,7 +45,7 @@ describe('CharacterTableRow', () => {
         </tbody>
       </table>
     )
-    expect(screen.getByText('Dead').closest('span')).toHaveClass('bg-red-100')
+    expect(screen.getByTestId('status-dot')).toHaveAttribute('data-status', 'Dead')
 
     rerender(
       <table>
@@ -54,7 +54,7 @@ describe('CharacterTableRow', () => {
         </tbody>
       </table>
     )
-    expect(screen.getByText('unknown').closest('span')).toHaveClass('bg-zinc-100')
+    expect(screen.getByTestId('status-dot')).toHaveAttribute('data-status', 'unknown')
   })
 
   it('handles click and keyboard navigation with proper accessibility', async () => {

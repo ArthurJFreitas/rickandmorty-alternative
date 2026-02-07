@@ -30,13 +30,13 @@ type Story = StoryObj<typeof meta>
 export const Default: Story = {
   args: {
     children: (
-      <div className="p-6">
+      <div style={{ padding: 24 }}>
         <CardHeader>
           <CardTitle>Card Title</CardTitle>
           <CardDescription>This is a card description</CardDescription>
         </CardHeader>
-        <div className="space-y-4">
-          <p className="text-zinc-600 dark:text-zinc-400">
+        <div style={{ display: 'grid', gap: 16 }}>
+          <p style={{ color: '#a1a1aa' }}>
             Card content goes here. This is the main body of the card.
           </p>
           <Button size="sm">Action</Button>
@@ -58,12 +58,12 @@ export const Default: Story = {
 export const Elevated: Story = {
   args: {
     children: (
-      <div className="p-6">
+      <div style={{ padding: 24 }}>
         <CardHeader>
           <CardTitle>Elevated Card</CardTitle>
           <CardDescription>Card with elevated shadow</CardDescription>
         </CardHeader>
-        <p className="text-zinc-600 dark:text-zinc-400">
+        <p style={{ color: '#a1a1aa' }}>
           This card has an elevated appearance with a more prominent shadow.
         </p>
       </div>
@@ -83,7 +83,7 @@ export const Elevated: Story = {
 export const Ghost: Story = {
   args: {
     children: (
-      <p className="text-zinc-600 dark:text-zinc-400">
+      <p style={{ color: '#a1a1aa' }}>
         Ghost variant with minimal styling
       </p>
     ),
@@ -103,8 +103,8 @@ export const WithPadding: Story = {
   args: {
     children: (
       <div>
-        <h3 className="font-bold text-lg mb-2 dark:text-zinc-100">Card with Medium Padding</h3>
-        <p className="text-zinc-600 dark:text-zinc-400">
+        <h3 style={{ fontWeight: 700, fontSize: 18, marginBottom: 8, color: '#f4f4f5' }}>Card with Medium Padding</h3>
+        <p style={{ color: '#a1a1aa' }}>
           This card has padding applied directly to the Card component.
         </p>
       </div>
@@ -124,15 +124,14 @@ export const StatCard: Story = {
   args: {
     variant: 'elevated',
     padding: 'md',
-    className: 'group hover:scale-105 transition-all duration-300',
     children: (
-      <div className="flex items-center gap-4">
-        <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-100 text-emerald-600 dark:bg-emerald-950 dark:text-emerald-400">
-          <p className="text-sm text-zinc-500 dark:text-zinc-400">Total Characters</p>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+        <div style={{ display: 'flex', height: 48, width: 48, alignItems: 'center', justifyContent: 'center', borderRadius: 12, background: '#064e3b', color: '#34d399' }}>
+          <p style={{ fontSize: 12, color: '#a1a1aa' }}>Total Characters</p>
         </div>
         <div>
-          <p className="text-sm text-zinc-500 dark:text-zinc-400">Total Characters</p>
-          <p className="text-2xl font-bold text-zinc-900 dark:text-zinc-100">826</p>
+          <p style={{ fontSize: 12, color: '#a1a1aa' }}>Total Characters</p>
+          <p style={{ fontSize: 24, fontWeight: 700, color: '#f4f4f5' }}>826</p>
         </div>
       </div>
     ),
@@ -152,33 +151,33 @@ export const CharacterCard: Story = {
     padding: 'none',
     children: (
       <>
-        <div className="border-b border-zinc-100 p-6 dark:border-zinc-800">
-          <CardHeader className="mb-0">
-            <div className="flex items-center justify-between">
+        <div style={{ borderBottom: '1px solid #27272a', padding: 24 }}>
+          <CardHeader style={{ marginBottom: 0 }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
               <CardTitle>Rick Sanchez</CardTitle>
               <Badge variant="success">Alive</Badge>
             </div>
             <CardDescription>Human • Male</CardDescription>
           </CardHeader>
         </div>
-        <div className="p-6">
-          <div className="space-y-2">
-            <div className="flex justify-between">
-              <span className="text-sm text-zinc-500 dark:text-zinc-400">Origin:</span>
-              <span className="text-sm font-medium dark:text-zinc-300">Earth (C-137)</span>
+        <div style={{ padding: 24 }}>
+          <div style={{ display: 'grid', gap: 8 }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <span style={{ fontSize: 14, color: '#a1a1aa' }}>Origin:</span>
+              <span style={{ fontSize: 14, fontWeight: 500, color: '#d4d4d8' }}>Earth (C-137)</span>
             </div>
-            <div className="flex justify-between">
-              <span className="text-sm text-zinc-500 dark:text-zinc-400">Location:</span>
-              <span className="text-sm font-medium dark:text-zinc-300">Citadel of Ricks</span>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <span style={{ fontSize: 14, color: '#a1a1aa' }}>Location:</span>
+              <span style={{ fontSize: 14, fontWeight: 500, color: '#d4d4d8' }}>Citadel of Ricks</span>
             </div>
-            <div className="flex justify-between">
-              <span className="text-sm text-zinc-500 dark:text-zinc-400">Episodes:</span>
-              <span className="text-sm font-medium dark:text-zinc-300">51</span>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <span style={{ fontSize: 14, color: '#a1a1aa' }}>Episodes:</span>
+              <span style={{ fontSize: 14, fontWeight: 500, color: '#d4d4d8' }}>51</span>
             </div>
           </div>
         </div>
-        <div className="border-t border-zinc-100 p-4 dark:border-zinc-800">
-          <Button variant="primary" size="sm" className="w-full">
+        <div style={{ borderTop: '1px solid #27272a', padding: 16 }}>
+          <Button variant="primary" size="sm" style={{ width: '100%' }}>
             View Details
           </Button>
         </div>

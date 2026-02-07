@@ -3,27 +3,25 @@
 import { type HTMLAttributes, type ReactNode } from 'react'
 import { cva, type VariantProps } from 'class-variance-authority'
 import { cn } from '@/lib/utils/style'
+import styles from './TableRow.module.css'
 
-const tableRowVariants = cva(
-  'group transition-colors',
-  {
-    variants: {
-      variant: {
-        default: 'hover:bg-zinc-800/50',
-        subtle: 'hover:bg-zinc-800/30',
-        none: '',
-      },
-      clickable: {
-        true: 'cursor-pointer',
-        false: '',
-      },
+const tableRowVariants = cva(styles.row, {
+  variants: {
+    variant: {
+      default: styles.variantDefault,
+      subtle: styles.variantSubtle,
+      none: '',
     },
-    defaultVariants: {
-      variant: 'default',
-      clickable: false,
+    clickable: {
+      true: styles.clickable,
+      false: '',
     },
-  }
-)
+  },
+  defaultVariants: {
+    variant: 'default',
+    clickable: false,
+  },
+})
 
 interface TableRowProps
   extends Omit<HTMLAttributes<HTMLTableRowElement>, 'onClick'>,
@@ -80,9 +78,9 @@ interface TableCellProps extends HTMLAttributes<HTMLTableCellElement> {
 }
 
 const alignClasses = {
-  left: 'text-left',
-  center: 'text-center',
-  right: 'text-right',
+  left: styles.alignLeft,
+  center: styles.alignCenter,
+  right: styles.alignRight,
 }
 
 export function TableCell({
@@ -95,9 +93,9 @@ export function TableCell({
   return (
     <td
       className={cn(
-        'px-4 py-4',
+        styles.cell,
         alignClasses[align],
-        hideOnMobile && 'hidden lg:table-cell',
+        hideOnMobile && styles.hideOnMobile,
         className
       )}
       {...props}

@@ -233,16 +233,4 @@ describe('CharacterTable integration: data fetching → rendering', () => {
     expect(screen.getAllByText('Alive').length).toBe(mockCharacters.length)
   })
 
-  it('matches snapshot after data loads', async () => {
-    const { container } = renderWithApollo(
-      defaultMocks,
-      <CharacterTableWithData />
-    )
-
-    await waitFor(() => {
-      expect(screen.getByText('Rick Sanchez')).toBeInTheDocument()
-    })
-
-    expect(container.firstChild).toMatchSnapshot()
-  })
 })

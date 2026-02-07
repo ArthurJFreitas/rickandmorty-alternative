@@ -12,28 +12,26 @@ import {
 import { cn } from '@/lib/utils/style'
 import { Spinner } from '@/components/atoms/Spinner'
 import { MapPinIcon } from '@phosphor-icons/react/dist/ssr'
+import styles from './LocationChart.module.css'
 
-const chartContainerVariants = cva(
-  'rounded-2xl border bg-zinc-900',
-  {
-    variants: {
-      variant: {
-        default: 'border-zinc-800',
-        elevated: 'border-zinc-800 shadow-xl shadow-zinc-950/50',
-        ghost: 'border-transparent bg-transparent',
-      },
-      size: {
-        sm: 'h-[600px] lg:h-[280px]',
-        md: 'h-[600px] lg:h-[360px]',
-        lg: 'h-[600px] lg:h-[420px]',
-      },
+const chartContainerVariants = cva(styles.container, {
+  variants: {
+    variant: {
+      default: styles.variantDefault,
+      elevated: styles.variantElevated,
+      ghost: styles.variantGhost,
     },
-    defaultVariants: {
-      variant: 'default',
-      size: 'md',
+    size: {
+      sm: styles.sizeSm,
+      md: styles.sizeMd,
+      lg: styles.sizeLg,
     },
-  }
-)
+  },
+  defaultVariants: {
+    variant: 'default',
+    size: 'md',
+  },
+})
 
 export interface LocationData {
   name: string
@@ -94,7 +92,7 @@ const renderCustomizedLabel = ({
       fill="white"
       textAnchor="middle"
       dominantBaseline="central"
-      className="text-sm font-extrabold drop-shadow-2xl"
+      className={styles.labelText}
       style={{
         paintOrder: 'stroke fill',
         stroke: 'rgba(0,0,0,0.3)',
@@ -121,10 +119,10 @@ export function LocationChart({
 
   if (isLoading) {
     return (
-      <div className={cn(chartContainerVariants({ variant, size }), 'flex items-center justify-center p-6', className)}>
-        <div className="text-center">
+      <div className={cn(chartContainerVariants({ variant, size }), styles.loadingState, className)}>
+        <div className={styles.loadingContent}>
           <Spinner size="lg" label="Loading chart" />
-          <p className="mt-4 text-sm text-zinc-400">
+          <p className={styles.loadingText}>
             Loading character data…
           </p>
         </div>
@@ -134,11 +132,11 @@ export function LocationChart({
 
   if (data.length === 0) {
     return (
-      <div className={cn(chartContainerVariants({ variant, size }), 'flex flex-col items-center justify-center p-6', className)}>
-        <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-zinc-800">
-          <MapPinIcon size={32} weight="duotone" className="text-zinc-500" />
+      <div className={cn(chartContainerVariants({ variant, size }), styles.emptyState, className)}>
+        <div className={styles.emptyIcon}>
+          <MapPinIcon size={32} weight="duotone" className={styles.iconMuted} />
         </div>
-        <p className="text-zinc-400">{emptyMessage}</p>
+        <p className={styles.emptyText}>{emptyMessage}</p>
       </div>
     )
   }
@@ -161,14 +159,14 @@ export function LocationChart({
   }
 
   return (
-    <div className={cn(chartContainerVariants({ variant, size }), 'p-6', className)}>
+    <div className={cn(chartContainerVariants({ variant, size }), styles.padding, className)}>
       {title ? (
-        <h3 className="mb-4 text-lg font-semibold text-zinc-100">
+        <h3 className={styles.title}>
           {title}
         </h3>
       ) : null}
-      <div className="flex h-full flex-col lg:flex-row lg:gap-6">
-        <div className="flex-1 lg:w-1/2" style={{ minHeight: 260 }}>
+      <div className={styles.content}>
+        <div className={styles.chartArea}>
           <ResponsiveContainer width="100%" height="100%">
             <PieChart>
               <Pie
@@ -234,7 +232,7 @@ export function LocationChart({
             </PieChart>
           </ResponsiveContainer>
         </div>
-        <div className="mt-6 flex flex-col gap-2.5 lg:mt-0 lg:w-1/2 max-h-96 overflow-y-auto px-2">
+        <div className={styles.legend}>
           {sortedData.map((entry, index) => {
             const isActive = activeIndex === index
             return (
@@ -242,43 +240,34 @@ export function LocationChart({
                 key={entry.name}
                 onClick={() => handleLegendClick(index)}
                 className={cn(
-                  'group/item flex w-full items-center gap-3 rounded-xl px-3 py-2.5 transition-all duration-200',
-                  'hover:bg-linear-to-r hover:from-zinc-800/50 hover:to-transparent',
-                  'hover:shadow-sm hover:scale-[1.02]',
-                  'focus:outline-none focus:ring-2 focus:ring-emerald-500/30',
-                  'border border-transparent hover:border-zinc-700',
-                  isActive && 'bg-emerald-950/30 border-emerald-800'
+                  styles.legendButton,
+                  isActive && styles.legendButtonActive
                 )}
               >
-                <div className="relative flex items-center justify-center">
+                <div className={styles.legendDotWrap}>
                   <div
                     className={cn(
-                      'h-3.5 w-3.5 rounded-full transition-all duration-200',
-                      'shadow-sm ring-2 ring-offset-2',
-                      'group-hover/item:scale-110 group-hover/item:shadow-md',
-                      'ring-zinc-900',
-                      isActive && 'ring-emerald-800 scale-110'
+                      styles.legendDot,
+                      isActive && styles.legendDotActive
                     )}
                     style={{
                       backgroundColor: COLORS[index % COLORS.length],
-                      boxShadow: `0 0 12px ${COLORS[index % COLORS.length]}40`
+                      boxShadow: `0 0 12px ${COLORS[index % COLORS.length]}40`,
                     }}
                   />
                 </div>
                 <span
                   className={cn(
-                    'flex-1 text-sm font-medium transition-colors text-left',
-                    'text-zinc-300 group-hover/item:text-zinc-100',
-                    isActive && 'text-emerald-100 font-semibold'
+                    styles.legendName,
+                    isActive && styles.legendNameActive
                   )}
                 >
                   {entry.name}
                 </span>
                 <span
                   className={cn(
-                    'text-sm font-bold transition-colors tabular-nums',
-                    'text-zinc-100',
-                    isActive && 'text-emerald-400'
+                    styles.legendCount,
+                    isActive && styles.legendCountActive
                   )}
                 >
                   {entry.count}
@@ -286,13 +275,13 @@ export function LocationChart({
               </button>
             )
           })}
-          <div className="mt-4 w-full border-t-2 border-zinc-700 pt-4 lg:mt-4 lg:w-auto lg:pt-4">
-            <div className="flex items-center justify-between rounded-xl bg-linear-to-r from-emerald-950/20 to-transparent px-4 py-3">
-              <div className="flex flex-col">
-                <span className="text-sm font-bold uppercase tracking-wide text-zinc-300">Total Characters</span>
-                <span className="text-xs text-zinc-400">with known locations</span>
+          <div className={styles.totalBlock}>
+            <div className={styles.totalRow}>
+              <div className={styles.totalLabel}>
+                <span className={styles.totalTitle}>Total Characters</span>
+                <span className={styles.totalSubtitle}>with known locations</span>
               </div>
-              <span className="text-xl font-bold text-emerald-400 tabular-nums">{total}</span>
+              <span className={styles.totalValue}>{total}</span>
             </div>
           </div>
         </div>

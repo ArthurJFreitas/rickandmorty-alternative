@@ -3,8 +3,8 @@
 import { Badge } from '@/components/atoms/Badge'
 import { Avatar } from '@/components/atoms/Avatar'
 import { TableRow, TableCell } from '@/components/molecules/TableRow'
-import { cn } from '@/lib/utils/style'
 import type { Character } from '@/services/graphql/types'
+import styles from './CharacterTableRow.module.css'
 
 interface CharacterTableRowProps {
   character: Character
@@ -21,7 +21,7 @@ export function CharacterTableRow({ character, onClick }: CharacterTableRowProps
   return (
     <TableRow onClick={onClick ? () => onClick(character) : undefined}>
       <TableCell align="center">
-        <div className="flex items-center justify-center">
+        <div className={styles.avatarCell}>
           <Avatar
             src={character.image}
             alt={`${character.name} avatar`}
@@ -33,10 +33,10 @@ export function CharacterTableRow({ character, onClick }: CharacterTableRowProps
 
       <TableCell>
         <div>
-          <div className="font-semibold text-zinc-100">
+          <div className={styles.name}>
             {character.name}
           </div>
-          <div className="text-sm text-zinc-400">
+          <div className={styles.species}>
             {character.species}
           </div>
         </div>
@@ -45,27 +45,30 @@ export function CharacterTableRow({ character, onClick }: CharacterTableRowProps
       <TableCell>
         <Badge variant={statusVariants[character.status]}>
           <span
-            className={cn(
-              'h-1.5 w-1.5 rounded-full',
-              character.status === 'Alive' && 'bg-emerald-500',
-              character.status === 'Dead' && 'bg-red-500',
-              character.status === 'unknown' && 'bg-zinc-400'
-            )}
+            className={`${styles.statusDot} ${
+              character.status === 'Alive'
+                ? styles.statusAlive
+                : character.status === 'Dead'
+                ? styles.statusDead
+                : styles.statusUnknown
+            }`}
+            data-testid="status-dot"
+            data-status={character.status}
           />
           {character.status}
         </Badge>
       </TableCell>
 
       <TableCell hideOnMobile>
-        <span className="text-zinc-400">{character.gender}</span>
+        <span className={styles.muted}>{character.gender}</span>
       </TableCell>
 
       <TableCell hideOnMobile>
-        <span className="text-zinc-400">{character.origin.name}</span>
+        <span className={styles.muted}>{character.origin.name}</span>
       </TableCell>
 
       <TableCell hideOnMobile>
-        <span className="text-zinc-400">{character.location.name}</span>
+        <span className={styles.muted}>{character.location.name}</span>
       </TableCell>
     </TableRow>
   )

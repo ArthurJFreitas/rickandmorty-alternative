@@ -1,29 +1,27 @@
 import { type HTMLAttributes, type ReactNode } from 'react'
 import { cva, type VariantProps } from 'class-variance-authority'
 import { cn } from '@/lib/utils/style'
+import styles from './Card.module.css'
 
-const cardVariants = cva(
-  'rounded-2xl border bg-zinc-900 transition-shadow',
-  {
-    variants: {
-      variant: {
-        default: 'border-zinc-800',
-        elevated: 'border-zinc-800 shadow-lg shadow-zinc-950/50',
-        ghost: 'border-transparent bg-transparent',
-      },
-      padding: {
-        none: '',
-        sm: 'p-4',
-        md: 'p-6',
-        lg: 'p-8',
-      },
+const cardVariants = cva(styles.card, {
+  variants: {
+    variant: {
+      default: styles.variantDefault,
+      elevated: styles.variantElevated,
+      ghost: styles.variantGhost,
     },
-    defaultVariants: {
-      variant: 'default',
-      padding: 'md',
+    padding: {
+      none: styles.paddingNone,
+      sm: styles.paddingSm,
+      md: styles.paddingMd,
+      lg: styles.paddingLg,
     },
-  }
-)
+  },
+  defaultVariants: {
+    variant: 'default',
+    padding: 'md',
+  },
+})
 
 interface CardProps
   extends HTMLAttributes<HTMLDivElement>,
@@ -45,7 +43,7 @@ interface CardHeaderProps extends HTMLAttributes<HTMLDivElement> {
 
 export function CardHeader({ children, className, ...props }: CardHeaderProps) {
   return (
-    <div className={cn('mb-4', className)} {...props}>
+    <div className={cn(styles.header, className)} {...props}>
       {children}
     </div>
   )
@@ -59,7 +57,7 @@ interface CardTitleProps extends HTMLAttributes<HTMLHeadingElement> {
 export function CardTitle({ children, as: Tag = 'h3', className, ...props }: CardTitleProps) {
   return (
     <Tag
-      className={cn('text-lg font-semibold text-zinc-100', className)}
+      className={cn(styles.title, className)}
       {...props}
     >
       {children}
@@ -73,7 +71,7 @@ interface CardDescriptionProps extends HTMLAttributes<HTMLParagraphElement> {
 
 export function CardDescription({ children, className, ...props }: CardDescriptionProps) {
   return (
-    <p className={cn('mt-1 text-sm text-zinc-400', className)} {...props}>
+    <p className={cn(styles.description, className)} {...props}>
       {children}
     </p>
   )

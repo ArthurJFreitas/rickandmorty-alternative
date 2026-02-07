@@ -115,19 +115,19 @@ export const IconOnly: Story = {
 export const AllVariants: Story = {
   args: {} as any,
   render: () => (
-    <div className="flex flex-col gap-4">
-      <div className="flex gap-3 items-center">
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+      <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
         <Button variant="primary">Primary</Button>
         <Button variant="secondary">Secondary</Button>
         <Button variant="ghost">Ghost</Button>
         <Button variant="danger">Danger</Button>
       </div>
-      <div className="flex gap-3 items-center">
+      <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
         <Button size="sm">Small</Button>
         <Button size="md">Medium</Button>
         <Button size="lg">Large</Button>
       </div>
-      <div className="flex gap-3 items-center">
+      <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
         <Button isLoading>Loading</Button>
         <Button disabled>Disabled</Button>
         <Button size="icon">

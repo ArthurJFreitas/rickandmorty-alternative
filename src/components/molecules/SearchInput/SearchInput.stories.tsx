@@ -129,9 +129,9 @@ export const AllStates: Story = {
     const [value3, setValue3] = useState('')
 
     return (
-      <div className="flex flex-col gap-6">
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
         <div>
-          <h3 className="mb-2 text-sm font-semibold text-zinc-700 dark:text-zinc-300">Empty</h3>
+          <h3 style={{ marginBottom: 8, fontSize: 14, fontWeight: 600, color: '#d4d4d8' }}>Empty</h3>
           <SearchInput
             value={value1}
             onValueChange={setValue1}
@@ -139,7 +139,7 @@ export const AllStates: Story = {
           />
         </div>
         <div>
-          <h3 className="mb-2 text-sm font-semibold text-zinc-700 dark:text-zinc-300">With Value</h3>
+          <h3 style={{ marginBottom: 8, fontSize: 14, fontWeight: 600, color: '#d4d4d8' }}>With Value</h3>
           <SearchInput
             value={value2}
             onValueChange={setValue2}
@@ -147,7 +147,7 @@ export const AllStates: Story = {
           />
         </div>
         <div>
-          <h3 className="mb-2 text-sm font-semibold text-zinc-700 dark:text-zinc-300">With Error</h3>
+          <h3 style={{ marginBottom: 8, fontSize: 14, fontWeight: 600, color: '#d4d4d8' }}>With Error</h3>
           <SearchInput
             value={value3}
             onValueChange={setValue3}
@@ -173,7 +173,7 @@ export const Interactive: Story = {
     }
 
     return (
-      <div className="flex flex-col gap-4">
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
         <SearchInput
           value={value}
           onValueChange={setValue}
@@ -181,13 +181,13 @@ export const Interactive: Story = {
           placeholder="Type to search..."
         />
         {searchHistory.length > 0 && (
-          <div className="rounded-lg border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900">
-            <p className="mb-2 text-sm font-semibold text-zinc-700 dark:text-zinc-300">
+          <div style={{ borderRadius: 12, border: '1px solid #27272a', background: '#18181b', padding: 16 }}>
+            <p style={{ marginBottom: 8, fontSize: 14, fontWeight: 600, color: '#d4d4d8' }}>
               Recent Searches:
             </p>
-            <ul className="space-y-1">
+            <ul style={{ display: 'grid', gap: 4, margin: 0, padding: 0, listStyle: 'none' }}>
               {searchHistory.map((term, index) => (
-                <li key={index} className="text-sm text-zinc-600 dark:text-zinc-400">
+                <li key={index} style={{ fontSize: 14, color: '#a1a1aa' }}>
                   {term}
                 </li>
               ))}

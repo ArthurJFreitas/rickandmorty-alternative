@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import { cn } from '@/lib/utils/style'
+import styles from './Avatar.module.css'
 
 interface AvatarProps {
   src: string
@@ -13,9 +14,9 @@ interface AvatarProps {
 }
 
 const sizeClasses = {
-  sm: 'h-8 w-8 text-xs',
-  md: 'h-11 w-11 text-base',
-  lg: 'h-16 w-16 text-2xl',
+  sm: styles.sizeSm,
+  md: styles.sizeMd,
+  lg: styles.sizeLg,
 }
 
 export function Avatar({ src, alt, name, size = 'md', className }: AvatarProps) {
@@ -26,16 +27,16 @@ export function Avatar({ src, alt, name, size = 'md', className }: AvatarProps) 
 
   const getColorFromName = (name: string) => {
     const colors = [
-      'bg-emerald-500',
-      'bg-blue-500',
-      'bg-violet-500',
-      'bg-amber-500',
-      'bg-red-500',
-      'bg-cyan-500',
-      'bg-pink-500',
-      'bg-lime-500',
-      'bg-orange-500',
-      'bg-indigo-500',
+      styles.color0,
+      styles.color1,
+      styles.color2,
+      styles.color3,
+      styles.color4,
+      styles.color5,
+      styles.color6,
+      styles.color7,
+      styles.color8,
+      styles.color9,
     ]
     const index = name.charCodeAt(0) % colors.length
     return colors[index]
@@ -45,7 +46,7 @@ export function Avatar({ src, alt, name, size = 'md', className }: AvatarProps) 
     return (
       <div
         className={cn(
-          'flex items-center justify-center rounded-full font-bold text-white ring-2 ring-zinc-800 transition-all',
+          styles.fallback,
           sizeClasses[size],
           getColorFromName(name),
           className
@@ -58,15 +59,15 @@ export function Avatar({ src, alt, name, size = 'md', className }: AvatarProps) 
   }
 
   return (
-    <div className={cn('relative', sizeClasses[size], className)}>
+    <div className={cn(styles.wrapper, sizeClasses[size], className)}>
       {imageLoading && (
         <div
           className={cn(
-            'absolute inset-0 flex items-center justify-center rounded-full bg-zinc-700 animate-pulse',
+            styles.placeholder,
             sizeClasses[size]
           )}
         >
-          <span className="text-xs text-zinc-400">{initial}</span>
+          <span className={styles.placeholderText}>{initial}</span>
         </div>
       )}
       <Image
@@ -75,9 +76,9 @@ export function Avatar({ src, alt, name, size = 'md', className }: AvatarProps) 
         width={size === 'sm' ? 32 : size === 'md' ? 44 : 64}
         height={size === 'sm' ? 32 : size === 'md' ? 44 : 64}
         className={cn(
-          'rounded-full object-cover ring-2 ring-zinc-800 transition-all',
+          styles.image,
           sizeClasses[size],
-          imageLoading && 'opacity-0'
+          imageLoading && styles.hidden
         )}
         loading="lazy"
         onLoad={() => setImageLoading(false)}

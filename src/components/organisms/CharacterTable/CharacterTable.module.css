@@ -1,0 +1,237 @@
+.tableWrapper {
+  width: 100%;
+  border-radius: 16px;
+  border: 1px solid #27272a;
+  background: #18181b;
+}
+
+.variantDefault {
+  border-color: #27272a;
+}
+
+.variantElevated {
+  border-color: #27272a;
+  box-shadow: 0 12px 24px rgba(9, 9, 11, 0.5);
+}
+
+.variantGhost {
+  border-color: transparent;
+  background: transparent;
+}
+
+.centerState {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 64px 0;
+  flex-direction: column;
+}
+
+.centerContent {
+  display: flex;
+  min-height: 320px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.centerContentSmall {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.centerText {
+  margin-top: 16px;
+  font-size: 0.875rem;
+  color: #a1a1aa;
+}
+
+.iconCircle {
+  margin-bottom: 16px;
+  display: flex;
+  height: 64px;
+  width: 64px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: #27272a;
+}
+
+.iconMuted {
+  color: #71717a;
+}
+
+.scrollContainer {
+  max-height: 600px;
+  overflow: auto;
+  border-radius: 12px;
+}
+
+.scrollContainer::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.scrollContainer::-webkit-scrollbar-track {
+  background: #27272a;
+  border-radius: 100px;
+  margin: 8px;
+}
+
+.scrollContainer::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #10b981, #059669);
+  border-radius: 100px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.scrollContainer::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #059669, #047857);
+}
+
+.scrollFade {
+  position: relative;
+}
+
+.scrollFade::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background: linear-gradient(
+    to bottom,
+    rgba(24, 24, 27, 0) 0%,
+    rgba(24, 24, 27, 0.8) 100%
+  );
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.hasScroll {
+}
+
+.scrollFade.hasScroll::after {
+  opacity: 1;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(39, 39, 42, 0.9);
+  backdrop-filter: blur(12px);
+}
+
+.headerCell {
+  padding: 16px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #a1a1aa;
+}
+
+.alignLeft {
+  text-align: left;
+}
+
+.alignCenter {
+  text-align: center;
+}
+
+.alignRight {
+  text-align: right;
+}
+
+.hideOnMobile {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .hideOnMobile {
+    display: table-cell;
+  }
+}
+
+.body {
+  border-top: 1px solid #27272a;
+}
+
+.rowDivider > tr:not(:last-child) {
+  border-bottom: 1px solid #27272a;
+}
+
+.loadMore {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid #27272a;
+  padding: 24px 0;
+}
+
+.loadMoreText {
+  margin-left: 12px;
+  font-size: 0.875rem;
+  color: #a1a1aa;
+}
+
+.loadMoreError {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.loadMoreErrorCard {
+  border-radius: 12px;
+  border: 1px solid rgba(127, 29, 29, 0.5);
+  background: rgba(69, 10, 10, 0.2);
+  padding: 12px 16px;
+}
+
+.loadMoreErrorTitle {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #f87171;
+}
+
+.loadMoreErrorMessage {
+  margin-top: 4px;
+  font-size: 0.75rem;
+  color: #ef4444;
+}
+
+.retryButton {
+  border-radius: 8px;
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  background: rgba(6, 95, 70, 0.2);
+  color: #34d399;
+  padding: 8px 16px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: background 0.2s ease, border-color 0.2s ease;
+  cursor: pointer;
+}
+
+.retryButton:hover {
+  background: rgba(6, 95, 70, 0.3);
+  border-color: rgba(16, 185, 129, 0.6);
+}
+
+.retryButton:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.3);
+}

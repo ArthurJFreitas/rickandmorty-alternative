@@ -5,28 +5,26 @@ import { cva, type VariantProps } from 'class-variance-authority'
 import { cn } from '@/lib/utils/style'
 import { Button } from '@/components/atoms/Button'
 import { MagnifyingGlassIcon, XIcon } from '@phosphor-icons/react/dist/ssr'
+import styles from './SearchInput.module.css'
 
-const searchInputVariants = cva(
-  'flex items-center gap-2 rounded-xl border bg-zinc-900 transition-all focus-within:ring-2 focus-within:ring-emerald-500/20 focus-within:border-emerald-500',
-  {
-    variants: {
-      variant: {
-        default: 'border-zinc-700',
-        elevated: 'border-zinc-700 shadow-sm',
-        error: 'border-red-500 focus-within:ring-red-500/20 focus-within:border-red-500',
-      },
-      inputSize: {
-        sm: 'h-9 px-3',
-        md: 'h-11 px-4',
-        lg: 'h-13 px-5',
-      },
+const searchInputVariants = cva(styles.container, {
+  variants: {
+    variant: {
+      default: styles.variantDefault,
+      elevated: styles.variantElevated,
+      error: styles.variantError,
     },
-    defaultVariants: {
-      variant: 'default',
-      inputSize: 'md',
+    inputSize: {
+      sm: styles.sizeSm,
+      md: styles.sizeMd,
+      lg: styles.sizeLg,
     },
-  }
-)
+  },
+  defaultVariants: {
+    variant: 'default',
+    inputSize: 'md',
+  },
+})
 
 interface SearchInputProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>,
@@ -62,12 +60,12 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
     }
 
     return (
-      <div className="w-full">
+      <div className={styles.wrapper}>
         <div className={cn(searchInputVariants({ variant: computedVariant, inputSize }), className)}>
           <MagnifyingGlassIcon
             size={20}
             weight="duotone"
-            className="shrink-0 text-zinc-500"
+            className={styles.icon}
             aria-hidden="true"
           />
           <input
@@ -77,7 +75,7 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
             value={value}
             onChange={(e) => onValueChange(e.target.value)}
             placeholder={placeholder}
-            className="min-w-0 flex-1 bg-transparent text-zinc-100 placeholder-zinc-500 focus:outline-none"
+            className={styles.input}
             aria-invalid={error ? 'true' : 'false'}
             aria-describedby={error ? `${inputId}-error` : undefined}
             {...props}
@@ -89,7 +87,7 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
               size="icon"
               onClick={handleClear}
               aria-label="Clear search"
-              className="h-7 w-7 shrink-0 rounded-lg"
+              className={styles.clearButton}
             >
               <XIcon size={16} weight="bold" aria-hidden="true" />
             </Button>
@@ -98,7 +96,7 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
         {error ? (
           <p
             id={`${inputId}-error`}
-            className="mt-1.5 text-sm text-red-500"
+            className={styles.errorText}
             role="alert"
           >
             {error}

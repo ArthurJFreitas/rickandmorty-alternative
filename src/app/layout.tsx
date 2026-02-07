@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     template: "%s | Rick and Morty Dashboard"
   },
   description: "Browse and search through all Rick and Morty characters with infinite scrolling. View character details, filter by status and gender, and explore location distribution charts.",
-  keywords: ["Rick and Morty", "characters", "dashboard", "GraphQL", "Next.js", "React", "TypeScript", "Tailwind CSS"],
+  keywords: ["Rick and Morty", "characters", "dashboard", "GraphQL", "Next.js", "React", "TypeScript"],
   authors: [{ name: "Arthur Freitas", url: "https://github.com/ArthurJFreitas" }],
   creator: "Arthur Freitas",
   publisher: "Arthur Freitas",
@@ -44,10 +44,10 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body
-        className={`${roboto.variable} antialiased`}
+        className={`${roboto.className} app-body`}
       >
         <NuqsAdapter>
-          <Suspense fallback={<div className="flex items-center justify-center p-6"><Spinner size="lg" label="Loading characters" /></div>}>
+          <Suspense fallback={<div className="suspense-fallback"><Spinner size="lg" label="Loading characters" /></div>}>
             <ApolloProvider>{children}</ApolloProvider>
             </Suspense>
         </NuqsAdapter>

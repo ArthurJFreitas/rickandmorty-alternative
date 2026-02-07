@@ -80,33 +80,33 @@ export const BrokenImage: Story = {
 export const AllSizes: Story = {
   args: {} as any,
   render: () => (
-    <div className="flex items-center gap-4">
-      <div className="flex flex-col items-center gap-2">
+    <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}>
         <Avatar
           src="https://rickandmortyapi.com/api/character/avatar/1.jpeg"
           alt="Rick Sanchez"
           name="Rick Sanchez"
           size="sm"
         />
-        <span className="text-xs text-zinc-500 dark:text-zinc-400">Small</span>
+        <span style={{ fontSize: 12, color: '#a1a1aa' }}>Small</span>
       </div>
-      <div className="flex flex-col items-center gap-2">
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}>
         <Avatar
           src="https://rickandmortyapi.com/api/character/avatar/2.jpeg"
           alt="Morty Smith"
           name="Morty Smith"
           size="md"
         />
-        <span className="text-xs text-zinc-500 dark:text-zinc-400">Medium</span>
+        <span style={{ fontSize: 12, color: '#a1a1aa' }}>Medium</span>
       </div>
-      <div className="flex flex-col items-center gap-2">
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}>
         <Avatar
           src="https://rickandmortyapi.com/api/character/avatar/3.jpeg"
           alt="Summer Smith"
           name="Summer Smith"
           size="lg"
         />
-        <span className="text-xs text-zinc-500 dark:text-zinc-400">Large</span>
+        <span style={{ fontSize: 12, color: '#a1a1aa' }}>Large</span>
       </div>
     </div>
   ),
@@ -115,7 +115,7 @@ export const AllSizes: Story = {
 export const CharacterGallery: Story = {
   args: {} as any,
   render: () => (
-    <div className="flex flex-wrap gap-3">
+    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12 }}>
       {[
         { name: 'Rick Sanchez', id: 1 },
         { name: 'Morty Smith', id: 2 },
@@ -141,7 +141,7 @@ export const CharacterGallery: Story = {
 export const FallbackInitials: Story = {
   args: {} as any,
   render: () => (
-    <div className="flex flex-wrap gap-3">
+    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12 }}>
       {[
         'Rick Sanchez',
         'Morty Smith',
@@ -152,14 +152,14 @@ export const FallbackInitials: Story = {
         'Birdperson',
         'Squanchy',
       ].map((name) => (
-        <div key={name} className="flex flex-col items-center gap-2">
+        <div key={name} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}>
           <Avatar
             src=""
             alt={name}
             name={name}
             size="md"
           />
-          <span className="text-xs text-zinc-500 dark:text-zinc-400">
+          <span style={{ fontSize: 12, color: '#a1a1aa' }}>
             {name.split(' ')[0]}
           </span>
         </div>

@@ -1,0 +1,321 @@
+.page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0a0a0a, #18181b, #0f0f12);
+}
+
+.centered {
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.centeredText {
+  margin-top: 16px;
+  color: #a1a1aa;
+}
+
+.errorWrapper {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0a0a0a, #18181b);
+  padding: 32px;
+}
+
+.errorInner {
+  margin: 0 auto;
+  max-width: 640px;
+}
+
+.errorActions {
+  margin-top: 16px;
+  text-align: center;
+}
+
+.notFoundCard {
+  border-radius: 16px;
+  border: 1px solid #27272a;
+  background: #18181b;
+  padding: 32px;
+}
+
+.notFoundTitle {
+  margin-bottom: 8px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #f4f4f5;
+}
+
+.notFoundText {
+  margin-bottom: 16px;
+  color: #a1a1aa;
+}
+
+.header {
+  border-bottom: 1px solid rgba(39, 39, 42, 0.8);
+  background: rgba(24, 24, 27, 0.85);
+  backdrop-filter: blur(16px);
+}
+
+.headerInner {
+  margin: 0 auto;
+  max-width: 1120px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 16px;
+}
+
+@media (min-width: 640px) {
+  .headerInner {
+    padding: 16px 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .headerInner {
+    padding: 16px 32px;
+  }
+}
+
+.backButton {
+  color: #a1a1aa;
+}
+
+.backButton:hover {
+  color: #f4f4f5;
+}
+
+.main {
+  margin: 0 auto;
+  max-width: 1120px;
+  padding: 32px 16px;
+}
+
+@media (min-width: 640px) {
+  .main {
+    padding: 32px 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .main {
+    padding: 32px 32px;
+  }
+}
+
+.layout {
+  display: grid;
+  gap: 32px;
+}
+
+@media (min-width: 1024px) {
+  .layout {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.sidebar {
+  position: sticky;
+  top: 32px;
+}
+
+@media (min-width: 1024px) {
+  .sidebarWrap {
+    grid-column: span 1 / span 1;
+  }
+}
+
+@media (min-width: 1024px) {
+  .content {
+    grid-column: span 2 / span 2;
+  }
+}
+
+.imageWrap {
+  margin-bottom: 24px;
+}
+
+.characterImage {
+  width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 10px 20px rgba(9, 9, 11, 0.5);
+}
+
+.characterName {
+  margin-bottom: 8px;
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #f4f4f5;
+}
+
+.statusRow {
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.statusDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+}
+
+.statusAlive {
+  background: #10b981;
+}
+
+.statusDead {
+  background: #ef4444;
+}
+
+.statusUnknown {
+  background: #a1a1aa;
+}
+
+.infoGroup {
+  border-top: 1px solid #27272a;
+  padding-top: 16px;
+  display: grid;
+  gap: 12px;
+}
+
+.contentStack {
+  display: grid;
+  gap: 24px;
+}
+
+.cardHeader {
+  margin-bottom: 16px;
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.iconBadge {
+  display: flex;
+  height: 40px;
+  width: 40px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: #1e3a8a;
+  color: #60a5fa;
+}
+
+.iconBadgePurple {
+  background: #3b1d5c;
+  color: #c4b5fd;
+}
+
+.iconBadgeAmber {
+  background: #78350f;
+  color: #fbbf24;
+}
+
+.sectionList {
+  display: grid;
+  gap: 16px;
+}
+
+.sectionCard {
+  border-radius: 12px;
+  border: 1px solid #27272a;
+  background: #18181b;
+  padding: 16px;
+}
+
+.sectionHeaderRow {
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sectionHeaderRow svg {
+  color: #60a5fa;
+}
+
+.sectionHeaderLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #a1a1aa;
+}
+
+.sectionValue {
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: #f4f4f5;
+}
+
+.sectionSubValue {
+  margin-top: 4px;
+  font-size: 0.875rem;
+  color: #a1a1aa;
+}
+
+.episodesGrid {
+  display: grid;
+  gap: 12px;
+}
+
+@media (min-width: 640px) {
+  .episodesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.episodeCard {
+  border-radius: 12px;
+  border: 1px solid #27272a;
+  background: #18181b;
+  padding: 12px;
+}
+
+.episodeCode {
+  margin-bottom: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #34d399;
+}
+
+.episodeName {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #f4f4f5;
+}
+
+.moreEpisodes {
+  margin-top: 16px;
+  font-size: 0.875rem;
+  color: #a1a1aa;
+}
+
+.metaList {
+  display: grid;
+  gap: 8px;
+  font-size: 0.875rem;
+}
+
+.infoRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.infoLabel {
+  font-weight: 500;
+  color: #a1a1aa;
+}
+
+.infoValue {
+  font-weight: 600;
+  color: #f4f4f5;
+}

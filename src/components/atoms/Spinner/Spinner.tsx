@@ -1,21 +1,19 @@
 import { cva, type VariantProps } from 'class-variance-authority'
 import { cn } from '@/lib/utils/style'
+import styles from './Spinner.module.css'
 
-const spinnerVariants = cva(
-  'animate-spin rounded-full border-emerald-600 border-t-transparent',
-  {
-    variants: {
-      size: {
-        sm: 'h-4 w-4 border-2',
-        md: 'h-8 w-8 border-[3px]',
-        lg: 'h-12 w-12 border-4',
-      },
+const spinnerVariants = cva(styles.circle, {
+  variants: {
+    size: {
+      sm: styles.sizeSm,
+      md: styles.sizeMd,
+      lg: styles.sizeLg,
     },
-    defaultVariants: {
-      size: 'md',
-    },
-  }
-)
+  },
+  defaultVariants: {
+    size: 'md',
+  },
+})
 
 interface SpinnerProps extends VariantProps<typeof spinnerVariants> {
   className?: string
@@ -24,8 +22,8 @@ interface SpinnerProps extends VariantProps<typeof spinnerVariants> {
 
 export function Spinner({ size, className, label = 'Loading' }: SpinnerProps) {
   return (
-    <div className={cn('flex items-center justify-center', className)} role="status">
-      <div className={spinnerVariants({ size })} aria-hidden="true" />
+    <div className={cn(styles.spinner, className)} role="status">
+      <div className={spinnerVariants({ size })} aria-hidden="true" data-size={size ?? 'md'} />
       <span className="sr-only">{label}</span>
     </div>
   )

@@ -1,0 +1,41 @@
+.row {
+  transition: background-color 0.2s ease;
+}
+
+.variantDefault:hover {
+  background: rgba(39, 39, 42, 0.5);
+}
+
+.variantSubtle:hover {
+  background: rgba(39, 39, 42, 0.3);
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.cell {
+  padding: 16px;
+}
+
+.alignLeft {
+  text-align: left;
+}
+
+.alignCenter {
+  text-align: center;
+}
+
+.alignRight {
+  text-align: right;
+}
+
+.hideOnMobile {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .hideOnMobile {
+    display: table-cell;
+  }
+}

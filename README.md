@@ -70,7 +70,7 @@ src/
 ├── app/                          # Next.js App Router
 │   ├── layout.tsx               # Root layout with Apollo Provider & metadata
 │   ├── page.tsx                 # Dashboard page (main view)
-│   ├── globals.css              # Global styles and Tailwind imports
+│   ├── globals.css              # Global styles and CSS variables
 │   └── character/
 │       └── [id]/
 │           └── page.tsx         # Character detail page (dynamic route)
@@ -114,7 +114,7 @@ src/
 ├── lib/                          # Utilities
 │   └── utils/
 │       ├── characterProcessing.ts  # Data transformation utilities
-│       └── style.ts                # Tailwind merge helpers (cn)
+│       └── style.ts                # Classname helper (cn)
 │
 ├── services/                     # External service integrations
 │   └── graphql/
@@ -178,7 +178,7 @@ src/
 - **Framework**: Next.js 16.1.6 (App Router)
 - **Language**: TypeScript 5
 - **Data Fetching**: Apollo Client 4.1.3
-- **Styling**: Tailwind CSS 4
+- **Styling**: CSS Modules + global CSS variables
 - **Icons**: Phosphor Icons 2.1.10
 - **Charts**: Recharts 3.7.0
 - **Testing**: Jest 30 + React Testing Library 16

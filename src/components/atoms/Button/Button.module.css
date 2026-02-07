@@ -1,0 +1,104 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.button:focus-visible {
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.6), 0 0 0 4px #18181b;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.primary {
+  background: #10b981;
+  color: #ffffff;
+}
+
+.primary:hover {
+  background: #059669;
+}
+
+.primary:active {
+  background: #047857;
+}
+
+.primary:disabled {
+  background: #047857;
+}
+
+.secondary {
+  background: #3f3f46;
+  color: #f4f4f5;
+}
+
+.secondary:hover {
+  background: #52525b;
+}
+
+.secondary:active {
+  background: #71717a;
+}
+
+.ghost {
+  background: transparent;
+  color: #d4d4d8;
+}
+
+.ghost:hover {
+  background: #27272a;
+}
+
+.ghost:active {
+  background: #3f3f46;
+}
+
+.danger {
+  background: #ef4444;
+  color: #ffffff;
+}
+
+.danger:hover {
+  background: #dc2626;
+}
+
+.danger:active {
+  background: #b91c1c;
+}
+
+.danger:disabled {
+  background: #b91c1c;
+}
+
+.sizeSm {
+  height: 32px;
+  padding: 0 12px;
+  font-size: 0.875rem;
+}
+
+.sizeMd {
+  height: 40px;
+  padding: 0 16px;
+  font-size: 1rem;
+}
+
+.sizeLg {
+  height: 48px;
+  padding: 0 24px;
+  font-size: 1.125rem;
+}
+
+.sizeIcon {
+  height: 40px;
+  width: 40px;
+}

@@ -15,6 +15,7 @@ import Image from 'next/image'
 import { UsersThreeIcon, MapPinIcon, DatabaseIcon, FilesIcon, HeartIcon, UserIcon } from '@phosphor-icons/react/dist/ssr'
 import { CheckIcon } from '@phosphor-icons/react'
 import { parseAsString, useQueryState } from 'nuqs'
+import styles from './page.module.css'
 
 const LocationChart = lazy(() => import('@/components/organisms/LocationChart').then(mod => ({ default: mod.LocationChart })))
 
@@ -31,14 +32,14 @@ function StatsCard({
     <Card
       variant="elevated"
       padding="md"
-      className="group flex items-center gap-4 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-emerald-900/30"
+      className={styles.statsCard}
     >
-      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-950 text-emerald-400 transition-all duration-300 group-hover:bg-emerald-600 group-hover:text-white group-hover:scale-110">
+      <div className={styles.statsIcon}>
         {icon}
       </div>
       <div>
-        <p className="text-sm text-zinc-400">{label}</p>
-        <p className="text-2xl font-bold text-zinc-100">{value}</p>
+        <p className={styles.statsLabel}>{label}</p>
+        <p className={styles.statsValue}>{value}</p>
       </div>
     </Card>
   )
@@ -97,25 +98,26 @@ export default function Dashboard() {
   }, [router])
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-zinc-950 via-zinc-950 to-zinc-900">
-      <header className="sticky top-0 z-50 border-b border-zinc-800/80 bg-zinc-900/80 backdrop-blur-lg">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-3">
-            <Image src={Logo} alt="Rick and Morty Dashboard" fetchPriority='high' width={140} height={40} priority />
+    <div className={styles.page}>
+      <header className={styles.header}>
+        <div className={styles.headerInner}>
+          <div>
+            <Image src={Logo} alt="Rick and Morty Dashboard" fetchPriority='high' width={140} height={60} priority />
           </div>
         </div>
       </header>
 
-      <main className='flex-1 overflow-auto'>
+      <main className={styles.main}>
 
-        <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-          <div className="grid gap-8">
+        <div className={styles.mainInner}>
+          <div className={styles.grid}>
 
-            <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <section className={styles.statsGrid}>
               <StatsCard
                 label="Total Characters"
                 value={charactersPageInfo?.count ?? '—'}
                 icon={<UsersThreeIcon size={24} weight="duotone" />}
+                
               />
               <StatsCard
                 label="Unique Locations"
@@ -136,9 +138,9 @@ export default function Dashboard() {
 
             <ErrorBoundary>
               <section>
-                <Card variant="elevated" padding="none" className=''>
-                  <CardHeader className="border-b border-zinc-800 px-6 py-4">
-                    <div className="flex items-start justify-between gap-4">
+                <Card variant="elevated" padding="none">
+                  <CardHeader className={styles.sectionHeader}>
+                    <div className={styles.sectionHeaderRow}>
                       <div>
                         <CardTitle>Character Distribution by Location</CardTitle>
                         <CardDescription>
@@ -146,19 +148,19 @@ export default function Dashboard() {
                         </CardDescription>
                       </div>
 
-                      <label className="flex items-center gap-2 cursor-pointer group shrink-0">
+                      <label className={styles.toggleLabel}>
                         <input
                           type="checkbox"
                           checked={showAllLocations}
                           onChange={(e) => setShowAllLocations(e.target.checked)}
-                          className="peer sr-only"
+                          className={styles.toggleInput}
                         />
-                        <div className="relative h-5 w-5 rounded border-2 border-zinc-600 bg-zinc-800 transition-all duration-200 peer-checked:border-emerald-400 peer-checked:bg-emerald-500 peer-focus:ring-2 peer-focus:ring-emerald-500/30">
-                          {showAllLocations ? <CheckIcon size={14} weight="bold" className="text-white shrink-0" /> : <span className="absolute inset-0 h-full w-full scale-0 text-white transition-transform duration-200 peer-checked:scale-100" />}
+                        <div className={styles.toggleBox}>
+                          {showAllLocations ? <CheckIcon size={14} weight="bold" className={styles.toggleCheck} /> : <span className={styles.toggleCheckHidden} />}
                         </div>
-                        <span className="text-sm font-medium text-zinc-300 transition-colors group-hover:text-zinc-100 whitespace-nowrap">
+                        <span className={styles.toggleText}>
                           Show all locations
-                          <span className="ml-1 text-xs text-zinc-400">
+                          <span className={styles.toggleSubtext}>
                             ({showAllLocations ? locationChartData.length : Math.min(6, locationChartData.length)}/{locationChartData.length})
                           </span>
                         </span>
@@ -167,7 +169,7 @@ export default function Dashboard() {
                   </CardHeader>
                   <Suspense
                     fallback={
-                      <div className="flex items-center justify-center p-6">
+                      <div className={styles.chartFallback}>
                         <Spinner size="lg" label="Loading chart" />
                       </div>
                     }
@@ -178,7 +180,7 @@ export default function Dashboard() {
                       isLoading={isLoadingCharacters && characters.length === 0}
                       variant="ghost"
                       size="md"
-                      className="border-0 overflow-auto"
+                      className={styles.chartGhost}
                       emptyMessage="Load characters to see location distribution"
                       showAllLocations={showAllLocations}
                     />
@@ -190,18 +192,18 @@ export default function Dashboard() {
             <ErrorBoundary>
               <section>
                 <Card variant="elevated" padding="none">
-                  <CardHeader className="border-b border-zinc-800 px-6 py-4">
-                    <div className="flex flex-col gap-4">
+                  <CardHeader className={styles.sectionHeader}>
+                    <div className={styles.filters}>
                       <div>
                         <CardTitle>Characters</CardTitle>
                         <CardDescription>
                           Browse and search through all Rick and Morty characters
                         </CardDescription>
                       </div>
-                      <div className="flex flex-col gap-3 lg:flex-row lg:items-end lg:gap-3">
+                      <div className={styles.filterRow}>
 
-                        <div className="flex flex-1 flex-col gap-2 lg:min-w-0">
-                          <label className="px-1 text-sm font-semibold text-zinc-300">
+                        <div className={styles.searchBlock}>
+                          <label className={styles.searchLabel}>
                             Search
                           </label>
                           <SearchInput
@@ -214,7 +216,7 @@ export default function Dashboard() {
                             variant="elevated"
                           />
                         </div>
-                        <div className="lg:w-56">
+                        <div className={styles.filterWidth}>
                           <CustomDropdown
                             label="Status"
                             value={statusFilter}
@@ -229,7 +231,7 @@ export default function Dashboard() {
                             variant="default"
                           />
                         </div>
-                        <div className="lg:w-56">
+                        <div className={styles.filterWidth}>
                           <CustomDropdown
                             label="Gender"
                             value={genderFilter}
@@ -250,8 +252,8 @@ export default function Dashboard() {
                   </CardHeader>
 
                   {charactersError ? (
-                    <div className="p-6">
-                      <div className="rounded-xl border border-red-800 bg-red-950 p-4 text-red-400">
+                    <div className={styles.errorBoxWrap}>
+                      <div className={styles.errorBox}>
                         Failed to load characters: {charactersError.message}
                       </div>
                     </div>
@@ -270,7 +272,7 @@ export default function Dashboard() {
                           ? `No characters match "${debouncedQuery}"`
                           : 'No characters found'
                       }
-                      className="border-0"
+                      className={styles.tableGhost}
                     />
                   )}
                 </Card>
@@ -280,13 +282,13 @@ export default function Dashboard() {
         </div>
       </main>
 
-      <footer className="border-t border-zinc-800/80 bg-zinc-900/80 backdrop-blur-lg py-8">
-        <div className="mx-auto max-w-7xl px-4 text-center text-sm text-zinc-400 sm:px-6 lg:px-8">
-          <p className="flex items-center justify-center gap-2">
+      <footer className={styles.footer}>
+        <div className={styles.footerInner}>
+          <p className={styles.footerText}>
             Made with
-            <span className="text-red-500 animate-pulse">❤️</span>
-            by <span className="font-semibold text-zinc-100">Arthur Freitas</span>
-            <span className="text-zinc-600">•</span>
+            <span className={styles.heart}>❤️</span>
+            by <span className={styles.author}>Arthur Freitas</span>
+            <span className={styles.dot}>•</span>
             <span>{new Date().getFullYear()}</span>
           </p>
         </div>

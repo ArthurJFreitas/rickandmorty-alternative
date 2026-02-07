@@ -8,24 +8,22 @@ import { CharacterTableRow } from '@/components/molecules/CharacterTableRow'
 import { MagnifyingGlassIcon } from '@phosphor-icons/react/dist/ssr'
 import type { Character } from '@/services/graphql/types'
 import { useInfiniteScroll, useScrollFade } from '@/hooks'
+import styles from './CharacterTable.module.css'
 
 export type { Character }
 
-const tableVariants = cva(
-  'w-full overflow-hidden rounded-2xl border bg-zinc-900',
-  {
-    variants: {
-      variant: {
-        default: 'border-zinc-800',
-        elevated: 'border-zinc-800 shadow-xl shadow-zinc-950/50',
-        ghost: 'border-transparent bg-transparent',
-      },
+const tableVariants = cva(styles.tableWrapper, {
+  variants: {
+    variant: {
+      default: styles.variantDefault,
+      elevated: styles.variantElevated,
+      ghost: styles.variantGhost,
     },
-    defaultVariants: {
-      variant: 'default',
-    },
-  }
-)
+  },
+  defaultVariants: {
+    variant: 'default',
+  },
+})
 
 interface CharacterTableProps extends VariantProps<typeof tableVariants> {
   characters: Character[]
@@ -49,9 +47,9 @@ const tableHeaders = [
 ]
 
 const alignClasses = {
-  left: 'text-left',
-  center: 'text-center',
-  right: 'text-right',
+  left: styles.alignLeft,
+  center: styles.alignCenter,
+  right: styles.alignRight,
 }
 
 export function CharacterTable({
@@ -79,16 +77,16 @@ export function CharacterTable({
 
   useScrollFade({
     containerRef: scrollContainerRef,
-    className: 'has-scroll',
+    className: styles.hasScroll,
     dependencies: [characters.length],
   })
 
   if (isLoading && characters.length === 0) {
     return (
-      <div className={cn(tableVariants({ variant }), 'flex items-center justify-center py-16', className)}>
-        <div className="flex min-h-80 flex-col justify-center items-center text-center">
+      <div className={cn(tableVariants({ variant }), styles.centerState, className)}>
+        <div className={styles.centerContent}>
           <Spinner size="lg" label="Loading characters" />
-          <p className="mt-4 text-sm text-zinc-400">
+          <p className={styles.centerText}>
             Loading characters…
           </p>
         </div>
@@ -98,28 +96,33 @@ export function CharacterTable({
 
   if (characters.length === 0) {
     return (
-      <div className={cn(tableVariants({ variant }), 'flex flex-col items-center justify-center py-16 min-h-40', className)}>
-        <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-zinc-800">
-          <MagnifyingGlassIcon size={32} weight="duotone" className="text-zinc-500" />
+      <div className={cn(tableVariants({ variant }), styles.centerState, className)}>
+        <div className={styles.centerContentSmall}>
+          <div className={styles.iconCircle}>
+            <MagnifyingGlassIcon size={32} weight="duotone" className={styles.iconMuted} />
+          </div>
         </div>
-        <p className="text-zinc-400">{emptyMessage}</p>
+        <p className={styles.centerText}>{emptyMessage}</p>
       </div>
     )
   }
 
   return (
     <div className={cn(tableVariants({ variant }), className)}>
-      <div ref={scrollContainerRef} className="table-scroll scroll-fade max-h-150 overflow-auto rounded-lg">
-        <table className="w-full">
-          <thead className="sticky top-0 z-10 bg-zinc-800/90 backdrop-blur">
+      <div
+        ref={scrollContainerRef}
+        className={cn(styles.scrollContainer, styles.scrollFade)}
+      >
+        <table className={styles.table}>
+          <thead className={styles.header}>
             <tr>
               {tableHeaders.map((header, index) => (
                 <th
                   key={index}
                   className={cn(
-                    'px-4 py-4 text-xs font-semibold uppercase tracking-wider text-zinc-400',
+                    styles.headerCell,
                     alignClasses[header.align],
-                    header.hideOnMobile && 'hidden lg:table-cell'
+                    header.hideOnMobile && styles.hideOnMobile
                   )}
                 >
                   {header.label}
@@ -127,7 +130,7 @@ export function CharacterTable({
               ))}
             </tr>
           </thead>
-          <tbody aria-live="polite" className="divide-y divide-zinc-800">
+          <tbody aria-live="polite" className={cn(styles.body, styles.rowDivider)}>
             {characters.map((character) => (
               <CharacterTableRow
                 key={character.id}
@@ -141,15 +144,15 @@ export function CharacterTable({
         {hasNextPage && loadMore ? (
           <div
             ref={infiniteScrollRef}
-            className="flex items-center justify-center border-t border-zinc-800 py-6"
+            className={styles.loadMore}
           >
             {loadMoreError ? (
-              <div className="flex flex-col items-center gap-3">
-                <div className="rounded-xl border border-red-800/50 bg-red-950/20 px-4 py-3">
-                  <p className="text-sm font-medium text-red-400">
+              <div className={styles.loadMoreError}>
+                <div className={styles.loadMoreErrorCard}>
+                  <p className={styles.loadMoreErrorTitle}>
                     Failed to load more characters
                   </p>
-                  <p className="mt-1 text-xs text-red-500">
+                  <p className={styles.loadMoreErrorMessage}>
                     {loadMoreError.message.includes('429') || loadMoreError.message.includes('rate')
                       ? 'API rate limit reached. Please wait a moment.'
                       : loadMoreError.message}
@@ -157,12 +160,7 @@ export function CharacterTable({
                 </div>
                 <button
                   onClick={loadMore}
-                  className={cn(
-                    'rounded-lg border px-4 py-2 text-sm font-medium transition-all',
-                    'border-emerald-800/50 bg-emerald-950/20 text-emerald-400',
-                    'hover:bg-emerald-950/30 hover:border-emerald-700/50',
-                    'focus:outline-none focus:ring-2 focus:ring-emerald-500/30'
-                  )}
+                  className={styles.retryButton}
                 >
                   Try Again
                 </button>
@@ -170,7 +168,7 @@ export function CharacterTable({
             ) : (
               <>
                 <Spinner size="sm" label="Loading more characters" />
-                <span className="ml-3 text-sm text-zinc-400">
+                <span className={styles.loadMoreText}>
                   Loading more…
                 </span>
               </>

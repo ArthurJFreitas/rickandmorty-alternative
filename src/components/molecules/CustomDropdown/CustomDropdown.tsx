@@ -4,38 +4,29 @@ import { useState, useRef, useEffect } from 'react'
 import { cva, type VariantProps } from 'class-variance-authority'
 import { cn } from '@/lib/utils/style'
 import { CaretDownIcon, CheckIcon } from '@phosphor-icons/react/dist/ssr'
+import styles from './CustomDropdown.module.css'
 
-const dropdownButtonVariants = cva(
-  'group flex items-center justify-between gap-3 rounded-xl border transition-all duration-200 cursor-pointer',
-  {
-    variants: {
-      variant: {
-        default:
-          'bg-zinc-900 border-zinc-700 ' +
-          'hover:border-emerald-500/50 ' +
-          'hover:shadow-md hover:shadow-zinc-950/50',
-        elevated:
-          'bg-zinc-800/50 border-zinc-700/50 ' +
-          'shadow-lg shadow-zinc-950/50 ' +
-          'hover:border-emerald-500/50 ' +
-          'backdrop-blur-sm',
-      },
-      size: {
-        sm: 'h-10 px-3.5',
-        md: 'h-12 px-4',
-      },
-      isOpen: {
-        true: 'ring-2 ring-emerald-500/20 border-emerald-500',
-        false: '',
-      },
+const dropdownButtonVariants = cva(styles.button, {
+  variants: {
+    variant: {
+      default: styles.variantDefault,
+      elevated: styles.variantElevated,
     },
-    defaultVariants: {
-      variant: 'default',
-      size: 'md',
-      isOpen: false,
+    size: {
+      sm: styles.sizeSm,
+      md: styles.sizeMd,
     },
-  }
-)
+    isOpen: {
+      true: styles.open,
+      false: '',
+    },
+  },
+  defaultVariants: {
+    variant: 'default',
+    size: 'md',
+    isOpen: false,
+  },
+})
 
 interface DropdownOption {
   value: string
@@ -94,48 +85,41 @@ export function CustomDropdown({
   }
 
   return (
-    <div className="flex flex-col gap-2" ref={dropdownRef}>
-      <label className="px-1 text-sm font-semibold text-zinc-300">
+    <div className={styles.wrapper} ref={dropdownRef}>
+      <label className={styles.label}>
         {label}
       </label>
-      <div className="relative">
+      <div className={styles.container}>
         <button
           type="button"
           onClick={() => setIsOpen(!isOpen)}
-          className={cn('w-full',dropdownButtonVariants({ variant, size, isOpen }))}
+          className={dropdownButtonVariants({ variant, size, isOpen })}
           aria-haspopup="listbox"
           aria-expanded={isOpen}
         >
-          <div className="flex items-center gap-3">
+          <div className={styles.buttonContent}>
             {icon && (
-              <div className="shrink-0 text-zinc-400 transition-colors group-hover:text-emerald-400">
+              <div className={styles.icon}>
                 {icon}
               </div>
             )}
-            <span className="font-medium text-zinc-100">
+            <span className={styles.selectedLabel}>
               {selectedOption?.label}
             </span>
           </div>
           <CaretDownIcon
             size={18}
             weight="bold"
-            className={cn(
-              'text-zinc-500 transition-all duration-200 group-hover:text-emerald-400',
-              isOpen && 'rotate-180 text-emerald-400'
-            )}
+            className={cn(styles.caret, isOpen && styles.caretOpen)}
           />
         </button>
 
         {isOpen && (
           <div
-            className={cn(
-              'absolute z-50 mt-2 w-full overflow-hidden rounded-xl border border-zinc-700 bg-zinc-900 shadow-xl',
-              'animate-in fade-in-0 zoom-in-95 slide-in-from-top-2',
-              'duration-200'
-            )}
+            className={styles.dropdown}
             role="listbox"
           >
-            <div className="max-h-64 overflow-y-auto py-1">
+            <div className={styles.options}>
               {options.map((option) => {
                 const isSelected = option.value === value
                 return (
@@ -144,23 +128,20 @@ export function CustomDropdown({
                     type="button"
                     onClick={() => handleSelect(option.value)}
                     className={cn(
-                      'flex w-full items-center justify-between px-4 py-3 text-left transition-all duration-150',
-                      'hover:bg-emerald-950/20',
-                      isSelected &&
-                        'bg-emerald-950/30 text-emerald-400',
-                      !isSelected && 'text-zinc-300'
+                      styles.option,
+                      isSelected && styles.optionSelected
                     )}
                     role="option"
                     aria-selected={isSelected}
                   >
-                    <span className={cn('font-medium', isSelected && 'font-semibold')}>
+                    <span className={cn(styles.optionLabel, isSelected && styles.optionLabelSelected)}>
                       {option.label}
                     </span>
                     {isSelected && (
                       <CheckIcon
                         size={18}
                         weight="bold"
-                        className="text-emerald-400"
+                        className={styles.check}
                       />
                     )}
                   </button>

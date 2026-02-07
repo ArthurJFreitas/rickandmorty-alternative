@@ -1,13 +1,40 @@
-@import "tailwindcss";
-
-@theme {
+:root {
   --font-family: var(--font-roboto), system-ui, sans-serif;
+  --color-bg: #0a0a0a;
+  --color-surface: #18181b;
+  --color-surface-2: #27272a;
+  --color-border: #3f3f46;
+  --color-text: #fafafa;
+  --color-text-muted: #a1a1aa;
+  --color-emerald: #10b981;
+  --color-emerald-dark: #065f46;
+  --color-red: #ef4444;
+  --color-blue: #3b82f6;
+  --color-amber: #f59e0b;
 }
 
 html,
 body {
   margin: 0;
   padding: 0;
+  font-family: var(--font-family);
+  background: var(--color-bg);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-family);
+}
+
+p, span {
+  margin: 0;
 }
 
 html {
@@ -15,12 +42,14 @@ html {
 }
 
 * {
+  box-sizing: border-box;
   scrollbar-width: thin;
-  scrollbar-color: rgb(161 161 170) transparent;
+  scrollbar-color: #a1a1aa transparent;
+  scroll-margin-top: 80px;
 }
 
 .dark * {
-  scrollbar-color: rgb(82 82 91) transparent;
+  scrollbar-color: #52525b transparent;
 }
 
 *::-webkit-scrollbar {
@@ -34,105 +63,51 @@ html {
 }
 
 *::-webkit-scrollbar-thumb {
-  background: rgb(161 161 170);
+  background: #a1a1aa;
   border-radius: 100px;
   border: 2px solid transparent;
   background-clip: padding-box;
 }
 
 *::-webkit-scrollbar-thumb:hover {
-  background: rgb(113 113 122);
+  background: #71717a;
   border: 2px solid transparent;
   background-clip: padding-box;
 }
 
 .dark *::-webkit-scrollbar-thumb {
-  background: rgb(82 82 91);
+  background: #52525b;
 }
 
 .dark *::-webkit-scrollbar-thumb:hover {
-  background: rgb(113 113 122);
+  background: #71717a;
 }
 
-.table-scroll::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
-
-.table-scroll::-webkit-scrollbar-track {
-  background: rgb(244 244 245);
-  border-radius: 100px;
-  margin: 8px;
-}
-
-.dark .table-scroll::-webkit-scrollbar-track {
-  background: rgb(39 39 42);
-}
-
-.table-scroll::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, rgb(16 185 129), rgb(5 150 105));
-  border-radius: 100px;
-  border: 2px solid transparent;
-  background-clip: padding-box;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
-.table-scroll::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, rgb(5 150 105), rgb(4 120 87));
-}
-
-.dark .table-scroll::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, rgb(16 185 129), rgb(5 150 105));
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-}
-
-.table-scroll {
-  scrollbar-width: thin;
-  scrollbar-color: rgb(16 185 129) rgb(244 244 245);
-}
-
-.dark .table-scroll {
-  scrollbar-color: rgb(16 185 129) rgb(39 39 42);
-}
-
-.scroll-fade {
-  position: relative;
-}
-
-.scroll-fade::after {
-  content: '';
+.sr-only {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 40px;
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.8) 100%
-  );
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
-.dark .scroll-fade::after {
-  background: linear-gradient(
-    to bottom,
-    rgba(24, 24, 27, 0) 0%,
-    rgba(24, 24, 27, 0.8) 100%
-  );
+.app-body {
+  min-height: 100vh;
+  background: var(--color-bg);
+  color: var(--color-text);
 }
 
-.scroll-fade.has-scroll::after {
-  opacity: 1;
+.suspense-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
 }
-
-* {
-  scroll-margin-top: 80px;
-}
-
 
 input[type="search"]::-webkit-search-cancel-button {
-    -webkit-appearance: none;
+  -webkit-appearance: none;
 }

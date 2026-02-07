@@ -169,7 +169,7 @@ export const MultipleDropdowns: Story = {
     const [location, setLocation] = useState('all')
 
     return (
-      <div className="flex flex-col gap-4" style={{ width: '100%' }}>
+      <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: 16 }}>
         <CustomDropdown
           label="Status"
           value={status}
@@ -206,14 +206,14 @@ export const MultipleDropdowns: Story = {
           ]}
         />
 
-        <div className="mt-4 rounded-lg border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900">
-          <p className="mb-2 text-sm font-semibold text-zinc-700 dark:text-zinc-300">
+        <div style={{ marginTop: 16, borderRadius: 12, border: '1px solid #27272a', background: '#18181b', padding: 16 }}>
+          <p style={{ marginBottom: 8, fontSize: 14, fontWeight: 600, color: '#d4d4d8' }}>
             Selected Filters:
           </p>
-          <ul className="space-y-1 text-sm text-zinc-600 dark:text-zinc-400">
-            <li>Status: <span className="font-medium">{status}</span></li>
-            <li>Gender: <span className="font-medium">{gender}</span></li>
-            <li>Location: <span className="font-medium">{location}</span></li>
+          <ul style={{ display: 'grid', gap: 4, fontSize: 14, color: '#a1a1aa', padding: 0, margin: 0, listStyle: 'none' }}>
+            <li>Status: <span style={{ fontWeight: 600 }}>{status}</span></li>
+            <li>Gender: <span style={{ fontWeight: 600 }}>{gender}</span></li>
+            <li>Location: <span style={{ fontWeight: 600 }}>{location}</span></li>
           </ul>
         </div>
       </div>

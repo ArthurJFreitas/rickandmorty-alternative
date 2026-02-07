@@ -58,8 +58,8 @@ export const WithLabel: Story = {
   render: () => {
     const [value, setValue] = useState('')
     return (
-      <div className="flex flex-col gap-2">
-        <label htmlFor="name" className="text-sm font-semibold text-zinc-700 dark:text-zinc-300">
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+        <label htmlFor="name" style={{ fontSize: 14, fontWeight: 600, color: '#d4d4d8' }}>
           Character Name
         </label>
         <Input
@@ -80,8 +80,8 @@ export const WithError: Story = {
     const error = value.length > 0 && value.length < 3 ? 'Name must be at least 3 characters' : undefined
 
     return (
-      <div className="flex flex-col gap-2">
-        <label htmlFor="name-error" className="text-sm font-semibold text-zinc-700 dark:text-zinc-300">
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+        <label htmlFor="name-error" style={{ fontSize: 14, fontWeight: 600, color: '#d4d4d8' }}>
           Character Name
         </label>
         <Input
@@ -92,7 +92,7 @@ export const WithError: Story = {
           variant={error ? 'error' : 'default'}
         />
         {error && (
-          <p className="text-sm text-red-500">{error}</p>
+          <p style={{ fontSize: 14, color: '#ef4444' }}>{error}</p>
         )}
       </div>
     )
@@ -123,21 +123,21 @@ export const LargeSize: Story = {
 export const DifferentTypes: Story = {
   args: {} as any,
   render: () => (
-    <div className="flex flex-col gap-4">
-      <div className="flex flex-col gap-2">
-        <label className="text-sm font-semibold text-zinc-700 dark:text-zinc-300">Text</label>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+        <label style={{ fontSize: 14, fontWeight: 600, color: '#d4d4d8' }}>Text</label>
         <Input type="text" placeholder="Enter text..." />
       </div>
-      <div className="flex flex-col gap-2">
-        <label className="text-sm font-semibold text-zinc-700 dark:text-zinc-300">Email</label>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+        <label style={{ fontSize: 14, fontWeight: 600, color: '#d4d4d8' }}>Email</label>
         <Input type="email" placeholder="Enter email..." />
       </div>
-      <div className="flex flex-col gap-2">
-        <label className="text-sm font-semibold text-zinc-700 dark:text-zinc-300">Password</label>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+        <label style={{ fontSize: 14, fontWeight: 600, color: '#d4d4d8' }}>Password</label>
         <Input type="password" placeholder="Enter password..." />
       </div>
-      <div className="flex flex-col gap-2">
-        <label className="text-sm font-semibold text-zinc-700 dark:text-zinc-300">Number</label>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+        <label style={{ fontSize: 14, fontWeight: 600, color: '#d4d4d8' }}>Number</label>
         <Input type="number" placeholder="Enter number..." />
       </div>
     </div>
@@ -154,12 +154,12 @@ export const FormExample: Story = {
     })
 
     return (
-      <div className="flex flex-col gap-4 rounded-xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
-        <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 16, borderRadius: 16, border: '1px solid #27272a', background: '#18181b', padding: 24 }}>
+        <h3 style={{ fontSize: 18, fontWeight: 600, color: '#f4f4f5' }}>
           Create Character
         </h3>
-        <div className="flex flex-col gap-2">
-          <label htmlFor="char-name" className="text-sm font-semibold text-zinc-700 dark:text-zinc-300">
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+          <label htmlFor="char-name" style={{ fontSize: 14, fontWeight: 600, color: '#d4d4d8' }}>
             Name
           </label>
           <Input
@@ -169,8 +169,8 @@ export const FormExample: Story = {
             placeholder="Character name..."
           />
         </div>
-        <div className="flex flex-col gap-2">
-          <label htmlFor="char-email" className="text-sm font-semibold text-zinc-700 dark:text-zinc-300">
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+          <label htmlFor="char-email" style={{ fontSize: 14, fontWeight: 600, color: '#d4d4d8' }}>
             Email
           </label>
           <Input
@@ -181,8 +181,8 @@ export const FormExample: Story = {
             placeholder="character@example.com"
           />
         </div>
-        <div className="flex flex-col gap-2">
-          <label htmlFor="char-location" className="text-sm font-semibold text-zinc-700 dark:text-zinc-300">
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+          <label htmlFor="char-location" style={{ fontSize: 14, fontWeight: 600, color: '#d4d4d8' }}>
             Location
           </label>
           <Input
@@ -192,9 +192,9 @@ export const FormExample: Story = {
             placeholder="Earth (C-137)"
           />
         </div>
-        <div className="mt-2 rounded-lg bg-zinc-50 p-3 dark:bg-zinc-800/50">
-          <p className="text-xs font-semibold text-zinc-700 dark:text-zinc-300">Form Data:</p>
-          <pre className="mt-1 text-xs text-zinc-600 dark:text-zinc-400">
+        <div style={{ marginTop: 8, borderRadius: 12, background: '#111827', padding: 12 }}>
+          <p style={{ fontSize: 12, fontWeight: 600, color: '#d4d4d8' }}>Form Data:</p>
+          <pre style={{ marginTop: 4, fontSize: 12, color: '#a1a1aa' }}>
             {JSON.stringify(formData, null, 2)}
           </pre>
         </div>

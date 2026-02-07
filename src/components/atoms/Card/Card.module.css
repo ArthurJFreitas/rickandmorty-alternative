@@ -1,0 +1,53 @@
+.card {
+  border-radius: 16px;
+  border: 1px solid #27272a;
+  background: #18181b;
+  transition: box-shadow 0.2s ease;
+}
+
+.variantDefault {
+  border-color: #27272a;
+}
+
+.variantElevated {
+  border-color: #27272a;
+  box-shadow: 0 12px 24px rgba(9, 9, 11, 0.5);
+}
+
+.variantGhost {
+  border-color: transparent;
+  background: transparent;
+  box-shadow: none;
+}
+
+.paddingNone {
+  padding: 0;
+}
+
+.paddingSm {
+  padding: 16px;
+}
+
+.paddingMd {
+  padding: 24px;
+}
+
+.paddingLg {
+  padding: 32px;
+}
+
+.header {
+  margin-bottom: 16px;
+}
+
+.title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #f4f4f5;
+}
+
+.description {
+  margin-top: 4px;
+  font-size: 0.875rem;
+  color: #a1a1aa;
+}

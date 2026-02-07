@@ -37,19 +37,19 @@ describe('Spinner', () => {
     it('renders with default medium size', () => {
       const { container } = render(<Spinner />)
       const spinnerElement = container.querySelector('div[aria-hidden="true"]')
-      expect(spinnerElement).toHaveClass('h-8', 'w-8', 'border-[3px]')
+      expect(spinnerElement).toHaveAttribute('data-size', 'md')
     })
 
     it('renders with small size', () => {
       const { container } = render(<Spinner size="sm" />)
       const spinnerElement = container.querySelector('div[aria-hidden="true"]')
-      expect(spinnerElement).toHaveClass('h-4', 'w-4', 'border-2')
+      expect(spinnerElement).toHaveAttribute('data-size', 'sm')
     })
 
     it('renders with large size', () => {
       const { container } = render(<Spinner size="lg" />)
       const spinnerElement = container.querySelector('div[aria-hidden="true"]')
-      expect(spinnerElement).toHaveClass('h-12', 'w-12', 'border-4')
+      expect(spinnerElement).toHaveAttribute('data-size', 'lg')
     })
   })
 

@@ -1,0 +1,37 @@
+.avatarCell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.name {
+  font-weight: 600;
+  color: #f4f4f5;
+}
+
+.species {
+  font-size: 0.875rem;
+  color: #a1a1aa;
+}
+
+.muted {
+  color: #a1a1aa;
+}
+
+.statusDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+}
+
+.statusAlive {
+  background: #10b981;
+}
+
+.statusDead {
+  background: #ef4444;
+}
+
+.statusUnknown {
+  background: #a1a1aa;
+}

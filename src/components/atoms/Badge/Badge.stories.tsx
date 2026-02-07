@@ -97,7 +97,7 @@ export const WithIcon: Story = {
 export const CharacterStatus: Story = {
   args: {} as any,
   render: () => (
-    <div className="flex gap-3 items-center flex-wrap">
+    <div style={{ display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' }}>
       <Badge variant="success">
         <CheckCircleIcon size={14} weight="fill" />
         Alive
@@ -117,15 +117,15 @@ export const CharacterStatus: Story = {
 export const AllVariants: Story = {
   args: {} as any,
   render: () => (
-    <div className="flex flex-col gap-4">
-      <div className="flex gap-3 items-center flex-wrap">
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+      <div style={{ display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' }}>
         <Badge variant="default">Default</Badge>
         <Badge variant="success">Success</Badge>
         <Badge variant="danger">Danger</Badge>
         <Badge variant="warning">Warning</Badge>
         <Badge variant="info">Info</Badge>
       </div>
-      <div className="flex gap-3 items-center">
+      <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
         <Badge size="sm">Small</Badge>
         <Badge size="md">Medium</Badge>
         <Badge size="lg">Large</Badge>
