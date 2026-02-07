@@ -45,7 +45,7 @@ export function Avatar({ src, alt, name, size = 'md', className }: AvatarProps) 
     return (
       <div
         className={cn(
-          'flex items-center justify-center rounded-full font-bold text-white ring-2 ring-zinc-100 dark:ring-zinc-800 transition-all',
+          'flex items-center justify-center rounded-full font-bold text-white ring-2 ring-zinc-800 transition-all',
           sizeClasses[size],
           getColorFromName(name),
           className
@@ -62,7 +62,7 @@ export function Avatar({ src, alt, name, size = 'md', className }: AvatarProps) 
       {imageLoading && (
         <div
           className={cn(
-            'absolute inset-0 flex items-center justify-center rounded-full bg-zinc-200 dark:bg-zinc-700 animate-pulse',
+            'absolute inset-0 flex items-center justify-center rounded-full bg-zinc-700 animate-pulse',
             sizeClasses[size]
           )}
         >
@@ -75,7 +75,7 @@ export function Avatar({ src, alt, name, size = 'md', className }: AvatarProps) 
         width={size === 'sm' ? 32 : size === 'md' ? 44 : 64}
         height={size === 'sm' ? 32 : size === 'md' ? 44 : 64}
         className={cn(
-          'rounded-full object-cover ring-2 ring-zinc-100 dark:ring-zinc-800 transition-all',
+          'rounded-full object-cover ring-2 ring-zinc-800 transition-all',
           sizeClasses[size],
           imageLoading && 'opacity-0'
         )}

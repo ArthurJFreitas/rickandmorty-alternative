@@ -7,12 +7,12 @@ import { Button } from '@/components/atoms/Button'
 import { MagnifyingGlassIcon, XIcon } from '@phosphor-icons/react/dist/ssr'
 
 const searchInputVariants = cva(
-  'flex items-center gap-2 rounded-xl border bg-white transition-all focus-within:ring-2 focus-within:ring-emerald-500/20 focus-within:border-emerald-500 dark:bg-zinc-900 dark:focus-within:ring-emerald-500/20',
+  'flex items-center gap-2 rounded-xl border bg-zinc-900 transition-all focus-within:ring-2 focus-within:ring-emerald-500/20 focus-within:border-emerald-500',
   {
     variants: {
       variant: {
-        default: 'border-zinc-200 dark:border-zinc-700',
-        elevated: 'border-zinc-200 shadow-sm dark:border-zinc-700',
+        default: 'border-zinc-700',
+        elevated: 'border-zinc-700 shadow-sm',
         error: 'border-red-500 focus-within:ring-red-500/20 focus-within:border-red-500',
       },
       inputSize: {
@@ -67,7 +67,7 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
           <MagnifyingGlassIcon
             size={20}
             weight="duotone"
-            className="shrink-0 text-zinc-400 dark:text-zinc-500"
+            className="shrink-0 text-zinc-500"
             aria-hidden="true"
           />
           <input
@@ -77,7 +77,7 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
             value={value}
             onChange={(e) => onValueChange(e.target.value)}
             placeholder={placeholder}
-            className="min-w-0 flex-1 bg-transparent text-zinc-900 placeholder-zinc-400 focus:outline-none dark:text-zinc-100 dark:placeholder-zinc-500"
+            className="min-w-0 flex-1 bg-transparent text-zinc-100 placeholder-zinc-500 focus:outline-none"
             aria-invalid={error ? 'true' : 'false'}
             aria-describedby={error ? `${inputId}-error` : undefined}
             {...props}

@@ -14,12 +14,12 @@ import { Spinner } from '@/components/atoms/Spinner'
 import { MapPinIcon } from '@phosphor-icons/react/dist/ssr'
 
 const chartContainerVariants = cva(
-  'rounded-2xl border bg-white dark:bg-zinc-900',
+  'rounded-2xl border bg-zinc-900',
   {
     variants: {
       variant: {
-        default: 'border-zinc-200 dark:border-zinc-800',
-        elevated: 'border-zinc-200 shadow-xl shadow-zinc-200/50 dark:border-zinc-800 dark:shadow-zinc-950/50',
+        default: 'border-zinc-800',
+        elevated: 'border-zinc-800 shadow-xl shadow-zinc-950/50',
         ghost: 'border-transparent bg-transparent',
       },
       size: {
@@ -124,7 +124,7 @@ export function LocationChart({
       <div className={cn(chartContainerVariants({ variant, size }), 'flex items-center justify-center p-6', className)}>
         <div className="text-center">
           <Spinner size="lg" label="Loading chart" />
-          <p className="mt-4 text-sm text-zinc-500 dark:text-zinc-400">
+          <p className="mt-4 text-sm text-zinc-400">
             Loading character data…
           </p>
         </div>
@@ -135,10 +135,10 @@ export function LocationChart({
   if (data.length === 0) {
     return (
       <div className={cn(chartContainerVariants({ variant, size }), 'flex flex-col items-center justify-center p-6', className)}>
-        <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-zinc-100 dark:bg-zinc-800">
-          <MapPinIcon size={32} weight="duotone" className="text-zinc-400 dark:text-zinc-500" />
+        <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-zinc-800">
+          <MapPinIcon size={32} weight="duotone" className="text-zinc-500" />
         </div>
-        <p className="text-zinc-500 dark:text-zinc-400">{emptyMessage}</p>
+        <p className="text-zinc-400">{emptyMessage}</p>
       </div>
     )
   }
@@ -163,7 +163,7 @@ export function LocationChart({
   return (
     <div className={cn(chartContainerVariants({ variant, size }), 'p-6', className)}>
       {title ? (
-        <h3 className="mb-4 text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+        <h3 className="mb-4 text-lg font-semibold text-zinc-100">
           {title}
         </h3>
       ) : null}
@@ -208,21 +208,21 @@ export function LocationChart({
               </Pie>
               <Tooltip
                 contentStyle={{
-                  backgroundColor: 'rgba(255, 255, 255, 0.98)',
+                  backgroundColor: 'rgba(24, 24, 27, 0.98)',
                   borderRadius: '16px',
-                  border: '1px solid #e4e4e7',
-                  boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)',
+                  border: '1px solid #3f3f46',
+                  boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5)',
                   padding: '16px 20px',
                   backdropFilter: 'blur(8px)',
                 }}
                 labelStyle={{
-                  color: '#18181b',
+                  color: '#fafafa',
                   fontWeight: 600,
                   fontSize: '14px',
                   marginBottom: '6px',
                 }}
                 itemStyle={{
-                  color: '#52525b',
+                  color: '#a1a1aa',
                   padding: 0,
                   fontSize: '13px',
                 }}
@@ -243,12 +243,11 @@ export function LocationChart({
                 onClick={() => handleLegendClick(index)}
                 className={cn(
                   'group/item flex w-full items-center gap-3 rounded-xl px-3 py-2.5 transition-all duration-200',
-                  'hover:bg-linear-to-r hover:from-zinc-50 hover:to-transparent',
-                  'dark:hover:from-zinc-800/50 dark:hover:to-transparent',
+                  'hover:bg-linear-to-r hover:from-zinc-800/50 hover:to-transparent',
                   'hover:shadow-sm hover:scale-[1.02]',
                   'focus:outline-none focus:ring-2 focus:ring-emerald-500/30',
-                  'border border-transparent hover:border-zinc-200 dark:hover:border-zinc-700',
-                  isActive && 'bg-emerald-50 dark:bg-emerald-950/30 border-emerald-200 dark:border-emerald-800'
+                  'border border-transparent hover:border-zinc-700',
+                  isActive && 'bg-emerald-950/30 border-emerald-800'
                 )}
               >
                 <div className="relative flex items-center justify-center">
@@ -257,8 +256,8 @@ export function LocationChart({
                       'h-3.5 w-3.5 rounded-full transition-all duration-200',
                       'shadow-sm ring-2 ring-offset-2',
                       'group-hover/item:scale-110 group-hover/item:shadow-md',
-                      'ring-white dark:ring-zinc-900',
-                      isActive && 'ring-emerald-200 dark:ring-emerald-800 scale-110'
+                      'ring-zinc-900',
+                      isActive && 'ring-emerald-800 scale-110'
                     )}
                     style={{
                       backgroundColor: COLORS[index % COLORS.length],
@@ -269,8 +268,8 @@ export function LocationChart({
                 <span
                   className={cn(
                     'flex-1 text-sm font-medium transition-colors text-left',
-                    'text-zinc-700 dark:text-zinc-300 group-hover/item:text-zinc-900 dark:group-hover/item:text-zinc-100',
-                    isActive && 'text-emerald-900 dark:text-emerald-100 font-semibold'
+                    'text-zinc-300 group-hover/item:text-zinc-100',
+                    isActive && 'text-emerald-100 font-semibold'
                   )}
                 >
                   {entry.name}
@@ -278,8 +277,8 @@ export function LocationChart({
                 <span
                   className={cn(
                     'text-sm font-bold transition-colors tabular-nums',
-                    'text-zinc-900 dark:text-zinc-100',
-                    isActive && 'text-emerald-600 dark:text-emerald-400'
+                    'text-zinc-100',
+                    isActive && 'text-emerald-400'
                   )}
                 >
                   {entry.count}
@@ -287,13 +286,13 @@ export function LocationChart({
               </button>
             )
           })}
-          <div className="mt-4 w-full border-t-2 border-zinc-200 pt-4 dark:border-zinc-700 lg:mt-4 lg:w-auto lg:pt-4">
-            <div className="flex items-center justify-between rounded-xl bg-linear-to-r from-emerald-50 to-transparent px-4 py-3 dark:from-emerald-950/20 dark:to-transparent">
+          <div className="mt-4 w-full border-t-2 border-zinc-700 pt-4 lg:mt-4 lg:w-auto lg:pt-4">
+            <div className="flex items-center justify-between rounded-xl bg-linear-to-r from-emerald-950/20 to-transparent px-4 py-3">
               <div className="flex flex-col">
-                <span className="text-sm font-bold uppercase tracking-wide text-zinc-700 dark:text-zinc-300">Total Characters</span>
-                <span className="text-xs text-zinc-500 dark:text-zinc-400">with known locations</span>
+                <span className="text-sm font-bold uppercase tracking-wide text-zinc-300">Total Characters</span>
+                <span className="text-xs text-zinc-400">with known locations</span>
               </div>
-              <span className="text-xl font-bold text-emerald-600 dark:text-emerald-400 tabular-nums">{total}</span>
+              <span className="text-xl font-bold text-emerald-400 tabular-nums">{total}</span>
             </div>
           </div>
         </div>

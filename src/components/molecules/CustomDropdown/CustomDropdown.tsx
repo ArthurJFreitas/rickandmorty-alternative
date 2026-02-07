@@ -11,13 +11,13 @@ const dropdownButtonVariants = cva(
     variants: {
       variant: {
         default:
-          'bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-700 ' +
-          'hover:border-emerald-500/50 dark:hover:border-emerald-500/50 ' +
-          'hover:shadow-md dark:hover:shadow-zinc-950/50',
+          'bg-zinc-900 border-zinc-700 ' +
+          'hover:border-emerald-500/50 ' +
+          'hover:shadow-md hover:shadow-zinc-950/50',
         elevated:
-          'bg-white dark:bg-zinc-800/50 border-zinc-200 dark:border-zinc-700/50 ' +
-          'shadow-lg shadow-zinc-200/50 dark:shadow-zinc-950/50 ' +
-          'hover:border-emerald-500/50 dark:hover:border-emerald-500/50 ' +
+          'bg-zinc-800/50 border-zinc-700/50 ' +
+          'shadow-lg shadow-zinc-950/50 ' +
+          'hover:border-emerald-500/50 ' +
           'backdrop-blur-sm',
       },
       size: {
@@ -95,7 +95,7 @@ export function CustomDropdown({
 
   return (
     <div className="flex flex-col gap-2" ref={dropdownRef}>
-      <label className="px-1 text-sm font-semibold text-zinc-700 dark:text-zinc-300">
+      <label className="px-1 text-sm font-semibold text-zinc-300">
         {label}
       </label>
       <div className="relative">
@@ -108,11 +108,11 @@ export function CustomDropdown({
         >
           <div className="flex items-center gap-3">
             {icon && (
-              <div className="shrink-0 text-zinc-500 transition-colors group-hover:text-emerald-600 dark:text-zinc-400 dark:group-hover:text-emerald-400">
+              <div className="shrink-0 text-zinc-400 transition-colors group-hover:text-emerald-400">
                 {icon}
               </div>
             )}
-            <span className="font-medium text-zinc-900 dark:text-zinc-100">
+            <span className="font-medium text-zinc-100">
               {selectedOption?.label}
             </span>
           </div>
@@ -120,8 +120,8 @@ export function CustomDropdown({
             size={18}
             weight="bold"
             className={cn(
-              'text-zinc-400 transition-all duration-200 group-hover:text-emerald-600 dark:text-zinc-500 dark:group-hover:text-emerald-400',
-              isOpen && 'rotate-180 text-emerald-600 dark:text-emerald-400'
+              'text-zinc-500 transition-all duration-200 group-hover:text-emerald-400',
+              isOpen && 'rotate-180 text-emerald-400'
             )}
           />
         </button>
@@ -129,8 +129,7 @@ export function CustomDropdown({
         {isOpen && (
           <div
             className={cn(
-              'absolute z-50 mt-2 w-full overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-xl',
-              'dark:border-zinc-700 dark:bg-zinc-900',
+              'absolute z-50 mt-2 w-full overflow-hidden rounded-xl border border-zinc-700 bg-zinc-900 shadow-xl',
               'animate-in fade-in-0 zoom-in-95 slide-in-from-top-2',
               'duration-200'
             )}
@@ -146,10 +145,10 @@ export function CustomDropdown({
                     onClick={() => handleSelect(option.value)}
                     className={cn(
                       'flex w-full items-center justify-between px-4 py-3 text-left transition-all duration-150',
-                      'hover:bg-emerald-50 dark:hover:bg-emerald-950/20',
+                      'hover:bg-emerald-950/20',
                       isSelected &&
-                        'bg-emerald-100 text-emerald-700 dark:bg-emerald-950/30 dark:text-emerald-400',
-                      !isSelected && 'text-zinc-700 dark:text-zinc-300'
+                        'bg-emerald-950/30 text-emerald-400',
+                      !isSelected && 'text-zinc-300'
                     )}
                     role="option"
                     aria-selected={isSelected}
@@ -161,7 +160,7 @@ export function CustomDropdown({
                       <CheckIcon
                         size={18}
                         weight="bold"
-                        className="text-emerald-600 dark:text-emerald-400"
+                        className="text-emerald-400"
                       />
                     )}
                   </button>

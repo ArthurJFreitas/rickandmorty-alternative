@@ -9,8 +9,8 @@ const tableRowVariants = cva(
   {
     variants: {
       variant: {
-        default: 'hover:bg-zinc-50 dark:hover:bg-zinc-800/50',
-        subtle: 'hover:bg-zinc-50/50 dark:hover:bg-zinc-800/30',
+        default: 'hover:bg-zinc-800/50',
+        subtle: 'hover:bg-zinc-800/30',
         none: '',
       },
       clickable: {

@@ -33,10 +33,10 @@ export function CharacterTableRow({ character, onClick }: CharacterTableRowProps
 
       <TableCell>
         <div>
-          <div className="font-semibold text-zinc-900 dark:text-zinc-100">
+          <div className="font-semibold text-zinc-100">
             {character.name}
           </div>
-          <div className="text-sm text-zinc-500 dark:text-zinc-400">
+          <div className="text-sm text-zinc-400">
             {character.species}
           </div>
         </div>
@@ -57,15 +57,15 @@ export function CharacterTableRow({ character, onClick }: CharacterTableRowProps
       </TableCell>
 
       <TableCell hideOnMobile>
-        <span className="text-zinc-600 dark:text-zinc-400">{character.gender}</span>
+        <span className="text-zinc-400">{character.gender}</span>
       </TableCell>
 
       <TableCell hideOnMobile>
-        <span className="text-zinc-600 dark:text-zinc-400">{character.origin.name}</span>
+        <span className="text-zinc-400">{character.origin.name}</span>
       </TableCell>
 
       <TableCell hideOnMobile>
-        <span className="text-zinc-600 dark:text-zinc-400">{character.location.name}</span>
+        <span className="text-zinc-400">{character.location.name}</span>
       </TableCell>
     </TableRow>
   )

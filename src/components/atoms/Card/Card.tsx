@@ -3,12 +3,12 @@ import { cva, type VariantProps } from 'class-variance-authority'
 import { cn } from '@/lib/utils/style'
 
 const cardVariants = cva(
-  'rounded-2xl border bg-white transition-shadow dark:bg-zinc-900',
+  'rounded-2xl border bg-zinc-900 transition-shadow',
   {
     variants: {
       variant: {
-        default: 'border-zinc-200 dark:border-zinc-800',
-        elevated: 'border-zinc-200 shadow-lg shadow-zinc-200/50 dark:border-zinc-800 dark:shadow-zinc-950/50',
+        default: 'border-zinc-800',
+        elevated: 'border-zinc-800 shadow-lg shadow-zinc-950/50',
         ghost: 'border-transparent bg-transparent',
       },
       padding: {
@@ -59,7 +59,7 @@ interface CardTitleProps extends HTMLAttributes<HTMLHeadingElement> {
 export function CardTitle({ children, as: Tag = 'h3', className, ...props }: CardTitleProps) {
   return (
     <Tag
-      className={cn('text-lg font-semibold text-zinc-900 dark:text-zinc-100', className)}
+      className={cn('text-lg font-semibold text-zinc-100', className)}
       {...props}
     >
       {children}
@@ -73,7 +73,7 @@ interface CardDescriptionProps extends HTMLAttributes<HTMLParagraphElement> {
 
 export function CardDescription({ children, className, ...props }: CardDescriptionProps) {
   return (
-    <p className={cn('mt-1 text-sm text-zinc-500 dark:text-zinc-400', className)} {...props}>
+    <p className={cn('mt-1 text-sm text-zinc-400', className)} {...props}>
       {children}
     </p>
   )

@@ -5,12 +5,12 @@ import { cva, type VariantProps } from 'class-variance-authority'
 import { cn } from '@/lib/utils/style'
 
 const inputVariants = cva(
-  'w-full rounded-lg border bg-white px-4 py-2 text-zinc-900 placeholder-zinc-400 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:cursor-not-allowed disabled:bg-zinc-100 dark:bg-zinc-800 dark:text-zinc-100 dark:placeholder-zinc-500 dark:focus:ring-offset-zinc-900',
+  'w-full rounded-lg border bg-zinc-800 px-4 py-2 text-zinc-100 placeholder-zinc-500 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-zinc-900 disabled:cursor-not-allowed disabled:bg-zinc-700',
   {
     variants: {
       variant: {
         default:
-          'border-zinc-300 focus:ring-emerald-500 dark:border-zinc-600',
+          'border-zinc-600 focus:ring-emerald-500',
         error:
           'border-red-500 focus:ring-red-500',
       },

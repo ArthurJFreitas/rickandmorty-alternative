@@ -51,7 +51,7 @@ export default function CharacterDetailPage() {
       <div className="flex min-h-screen items-center justify-center bg-linear-to-br from-zinc-950 via-zinc-950 to-zinc-900">
         <div className="text-center">
           <Spinner size="lg" label="Loading character" />
-          <p className="mt-4 text-zinc-600 dark:text-zinc-400">
+          <p className="mt-4 text-zinc-400">
             Loading character details...
           </p>
         </div>
@@ -61,7 +61,7 @@ export default function CharacterDetailPage() {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-linear-to-br from-zinc-50 to-zinc-100 p-8 dark:from-zinc-950 dark:to-zinc-900">
+      <div className="min-h-screen bg-linear-to-br from-zinc-950 to-zinc-900 p-8">
         <div className="mx-auto max-w-2xl">
           <InlineError error={error} onRetry={() => refetch()} />
           <div className="mt-4 text-center">
@@ -76,13 +76,13 @@ export default function CharacterDetailPage() {
 
   if (!character) {
     return (
-      <div className="min-h-screen bg-linear-to-br from-zinc-50 to-zinc-100 p-8 dark:from-zinc-950 dark:to-zinc-900">
+      <div className="min-h-screen bg-linear-to-br from-zinc-950 to-zinc-900 p-8">
         <div className="mx-auto max-w-2xl text-center">
-          <div className="rounded-2xl border border-zinc-200 bg-white p-8 dark:border-zinc-800 dark:bg-zinc-900">
-            <h2 className="mb-2 text-xl font-bold text-zinc-900 dark:text-zinc-100">
+          <div className="rounded-2xl border border-zinc-800 bg-zinc-900 p-8">
+            <h2 className="mb-2 text-xl font-bold text-zinc-100">
               Character Not Found
             </h2>
-            <p className="mb-4 text-zinc-600 dark:text-zinc-400">
+            <p className="mb-4 text-zinc-400">
               The character you&apos;re looking for doesn&apos;t exist.
             </p>
             <Button onClick={() => router.push('/')} variant="primary">
@@ -124,7 +124,7 @@ export default function CharacterDetailPage() {
                 />
               </div>
 
-              <h1 className="mb-2 text-3xl font-bold text-zinc-900 dark:text-zinc-100">
+              <h1 className="mb-2 text-3xl font-bold text-zinc-100">
                 {character.name}
               </h1>
 
@@ -142,7 +142,7 @@ export default function CharacterDetailPage() {
                 </Badge>
               </div>
 
-              <div className="space-y-3 border-t border-zinc-200 pt-4 dark:border-zinc-800">
+              <div className="space-y-3 border-t border-zinc-800 pt-4">
                 <InfoRow label="Species" value={character.species} />
                 {character.type && <InfoRow label="Type" value={character.type} />}
                 <InfoRow label="Gender" value={character.gender} />
@@ -154,7 +154,7 @@ export default function CharacterDetailPage() {
             <Card variant="elevated" padding="lg">
               <CardHeader className="mb-4">
                 <CardTitle className="flex items-center gap-2">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-100 text-blue-600 dark:bg-blue-950 dark:text-blue-400">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-950 text-blue-400">
                     <MapPinIcon size={20} weight="duotone" />
                   </div>
                   Location Information
@@ -162,35 +162,35 @@ export default function CharacterDetailPage() {
               </CardHeader>
 
               <div className="space-y-4">
-                <div className="rounded-lg border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900">
+                <div className="rounded-lg border border-zinc-800 bg-zinc-900 p-4">
                   <div className="mb-2 flex items-center gap-2">
-                    <GlobeHemisphereWestIcon size={16} weight="duotone" className="text-blue-600 dark:text-blue-400" />
-                    <h3 className="text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+                    <GlobeHemisphereWestIcon size={16} weight="duotone" className="text-blue-400" />
+                    <h3 className="text-sm font-semibold uppercase tracking-wider text-zinc-400">
                       Origin
                     </h3>
                   </div>
-                  <p className="text-lg font-medium text-zinc-900 dark:text-zinc-100">
+                  <p className="text-lg font-medium text-zinc-100">
                     {character.origin.name}
                   </p>
                   {character.origin.dimension && (
-                    <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
+                    <p className="mt-1 text-sm text-zinc-400">
                       {character.origin.dimension}
                     </p>
                   )}
                 </div>
 
-                <div className="rounded-lg border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900">
+                <div className="rounded-lg border border-zinc-800 bg-zinc-900 p-4">
                   <div className="mb-2 flex items-center gap-2">
-                    <MapPinIcon size={16} weight="duotone" className="text-blue-600 dark:text-blue-400" />
-                    <h3 className="text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+                    <MapPinIcon size={16} weight="duotone" className="text-blue-400" />
+                    <h3 className="text-sm font-semibold uppercase tracking-wider text-zinc-400">
                       Last Known Location
                     </h3>
                   </div>
-                  <p className="text-lg font-medium text-zinc-900 dark:text-zinc-100">
+                  <p className="text-lg font-medium text-zinc-100">
                     {character.location.name}
                   </p>
                   {character.location.dimension && (
-                    <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
+                    <p className="mt-1 text-sm text-zinc-400">
                       {character.location.dimension}
                     </p>
                   )}
@@ -202,7 +202,7 @@ export default function CharacterDetailPage() {
               <Card variant="elevated" padding="lg">
                 <CardHeader className="mb-4">
                   <CardTitle className="flex items-center gap-2">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-purple-100 text-purple-600 dark:bg-purple-950 dark:text-purple-400">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-purple-950 text-purple-400">
                       <TelevisionSimpleIcon size={20} weight="duotone" />
                     </div>
                     Episodes ({character.episode.length})
@@ -213,12 +213,12 @@ export default function CharacterDetailPage() {
                   {character.episode.slice(0, 10).map((episode) => (
                     <div
                       key={episode.id}
-                      className="rounded-lg border border-zinc-200 bg-zinc-50 p-3 dark:border-zinc-800 dark:bg-zinc-900"
+                      className="rounded-lg border border-zinc-800 bg-zinc-900 p-3"
                     >
-                      <div className="mb-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+                      <div className="mb-1 text-xs font-semibold text-emerald-400">
                         {episode.episode}
                       </div>
-                      <div className="text-sm font-medium text-zinc-900 dark:text-zinc-100">
+                      <div className="text-sm font-medium text-zinc-100">
                         {episode.name}
                       </div>
                     </div>
@@ -226,7 +226,7 @@ export default function CharacterDetailPage() {
                 </div>
 
                 {character.episode.length > 10 && (
-                  <p className="mt-4 text-sm text-zinc-500 dark:text-zinc-400">
+                  <p className="mt-4 text-sm text-zinc-400">
                     + {character.episode.length - 10} more episodes
                   </p>
                 )}
@@ -236,7 +236,7 @@ export default function CharacterDetailPage() {
             <Card variant="elevated" padding="lg">
               <CardHeader className="mb-4">
                 <CardTitle className="flex items-center gap-2">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-amber-100 text-amber-600 dark:bg-amber-950 dark:text-amber-400">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-amber-950 text-amber-400">
                     <InfoIcon size={20} weight="duotone" />
                   </div>
                   Metadata
@@ -265,10 +265,10 @@ export default function CharacterDetailPage() {
 function InfoRow({ label, value }: { label: string; value: string }) {
   return (
     <div className="flex items-center justify-between">
-      <span className="text-sm font-medium text-zinc-600 dark:text-zinc-400">
+      <span className="text-sm font-medium text-zinc-400">
         {label}
       </span>
-      <span className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+      <span className="text-sm font-semibold text-zinc-100">
         {value}
       </span>
     </div>

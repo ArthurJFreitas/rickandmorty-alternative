@@ -6,18 +6,18 @@ import { cn } from '@/lib/utils/style'
 import { Spinner } from '@/components/atoms/Spinner'
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:cursor-not-allowed dark:focus:ring-offset-zinc-900',
+  'inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-zinc-900 disabled:cursor-not-allowed',
   {
     variants: {
       variant: {
         primary:
-          'bg-emerald-600 text-white hover:bg-emerald-700 active:bg-emerald-800 focus:ring-emerald-500 disabled:bg-emerald-300',
+          'bg-emerald-600 text-white hover:bg-emerald-700 active:bg-emerald-800 focus:ring-emerald-500 disabled:bg-emerald-800',
         secondary:
-          'bg-zinc-200 text-zinc-900 hover:bg-zinc-300 active:bg-zinc-400 focus:ring-zinc-500 dark:bg-zinc-700 dark:text-zinc-100 dark:hover:bg-zinc-600',
+          'bg-zinc-700 text-zinc-100 hover:bg-zinc-600 active:bg-zinc-500 focus:ring-zinc-500',
         ghost:
-          'bg-transparent text-zinc-700 hover:bg-zinc-100 active:bg-zinc-200 focus:ring-zinc-500 dark:text-zinc-300 dark:hover:bg-zinc-800',
+          'bg-transparent text-zinc-300 hover:bg-zinc-800 active:bg-zinc-700 focus:ring-zinc-500',
         danger:
-          'bg-red-600 text-white hover:bg-red-700 active:bg-red-800 focus:ring-red-500 disabled:bg-red-300',
+          'bg-red-600 text-white hover:bg-red-700 active:bg-red-800 focus:ring-red-500 disabled:bg-red-800',
       },
       size: {
         sm: 'h-8 px-3 text-sm',

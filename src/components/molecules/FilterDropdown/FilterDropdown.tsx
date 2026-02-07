@@ -11,14 +11,14 @@ const filterDropdownVariants = cva(
     variants: {
       variant: {
         default:
-          'bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-700 ' +
-          'hover:border-emerald-500/50 dark:hover:border-emerald-500/50 ' +
+          'bg-zinc-900 border-zinc-700 ' +
+          'hover:border-emerald-500/50 ' +
           'focus-within:ring-2 focus-within:ring-emerald-500/20 focus-within:border-emerald-500 ' +
-          'hover:shadow-md dark:hover:shadow-zinc-950/50',
+          'hover:shadow-md hover:shadow-zinc-950/50',
         elevated:
-          'bg-white dark:bg-zinc-800/50 border-zinc-200 dark:border-zinc-700/50 ' +
-          'shadow-lg shadow-zinc-200/50 dark:shadow-zinc-950/50 ' +
-          'hover:border-emerald-500/50 dark:hover:border-emerald-500/50 ' +
+          'bg-zinc-800/50 border-zinc-700/50 ' +
+          'shadow-lg shadow-zinc-950/50 ' +
+          'hover:border-emerald-500/50 ' +
           'focus-within:ring-2 focus-within:ring-emerald-500/20 focus-within:border-emerald-500 ' +
           'backdrop-blur-sm',
       },
@@ -62,12 +62,12 @@ export function FilterDropdown({
 }: FilterDropdownProps) {
   return (
     <div className="flex flex-col gap-2">
-      <label className="text-sm font-semibold text-zinc-700 dark:text-zinc-300 px-1">
+      <label className="text-sm font-semibold text-zinc-300 px-1">
         {label}
       </label>
       <div className={cn(filterDropdownVariants({ variant, size }), 'relative', className)}>
         {icon && (
-          <div className="shrink-0 text-zinc-500 dark:text-zinc-400 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+          <div className="shrink-0 text-zinc-400 group-hover:text-emerald-400 transition-colors">
             {icon}
           </div>
         )}
@@ -76,13 +76,13 @@ export function FilterDropdown({
           onChange={(e) => onValueChange(e.target.value)}
           className={cn(
             'flex-1 appearance-none bg-transparent focus:outline-none cursor-pointer',
-            'text-zinc-900 dark:text-zinc-100 font-medium',
+            'text-zinc-100 font-medium',
             'pr-8 transition-colors',
-            '[&>option]:bg-white [&>option]:dark:bg-zinc-900',
-            '[&>option]:text-zinc-900 [&>option]:dark:text-zinc-100',
+            '[&>option]:bg-zinc-900',
+            '[&>option]:text-zinc-100',
             '[&>option]:py-2 [&>option]:px-3',
-            '[&>option:checked]:bg-emerald-50 [&>option:checked]:dark:bg-emerald-950/30',
-            '[&>option:hover]:bg-emerald-50 [&>option:hover]:dark:bg-emerald-950/20'
+            '[&>option:checked]:bg-emerald-950/30',
+            '[&>option:hover]:bg-emerald-950/20'
           )}
           {...props}
         >
@@ -100,7 +100,7 @@ export function FilterDropdown({
           <CaretDownIcon
             size={18}
             weight="bold"
-            className="text-zinc-400 dark:text-zinc-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 group-focus-within:rotate-180 transition-all duration-200"
+            className="text-zinc-500 group-hover:text-emerald-400 group-focus-within:rotate-180 transition-all duration-200"
           />
         </div>
       </div>

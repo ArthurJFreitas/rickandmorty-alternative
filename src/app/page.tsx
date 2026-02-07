@@ -31,14 +31,14 @@ function StatsCard({
     <Card
       variant="elevated"
       padding="md"
-      className="group flex items-center gap-4 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-emerald-200/50 dark:hover:shadow-emerald-900/30"
+      className="group flex items-center gap-4 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-emerald-900/30"
     >
-      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-100 text-emerald-600 transition-all duration-300 group-hover:bg-emerald-500 group-hover:text-white group-hover:scale-110 dark:bg-emerald-950 dark:text-emerald-400 dark:group-hover:bg-emerald-600">
+      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-950 text-emerald-400 transition-all duration-300 group-hover:bg-emerald-600 group-hover:text-white group-hover:scale-110">
         {icon}
       </div>
       <div>
-        <p className="text-sm text-zinc-500 dark:text-zinc-400">{label}</p>
-        <p className="text-2xl font-bold text-zinc-900 dark:text-zinc-100">{value}</p>
+        <p className="text-sm text-zinc-400">{label}</p>
+        <p className="text-2xl font-bold text-zinc-100">{value}</p>
       </div>
     </Card>
   )
@@ -137,7 +137,7 @@ export default function Dashboard() {
             <ErrorBoundary>
               <section>
                 <Card variant="elevated" padding="none" className=''>
-                  <CardHeader className="border-b border-zinc-100 px-6 py-4 dark:border-zinc-800">
+                  <CardHeader className="border-b border-zinc-800 px-6 py-4">
                     <div className="flex items-start justify-between gap-4">
                       <div>
                         <CardTitle>Character Distribution by Location</CardTitle>
@@ -153,12 +153,12 @@ export default function Dashboard() {
                           onChange={(e) => setShowAllLocations(e.target.checked)}
                           className="peer sr-only"
                         />
-                        <div className="relative h-5 w-5 rounded border-2 border-zinc-300 bg-white transition-all duration-200 peer-checked:border-emerald-500 peer-checked:bg-emerald-500 peer-focus:ring-2 peer-focus:ring-emerald-500/30 dark:border-zinc-600 dark:bg-zinc-800 dark:peer-checked:border-emerald-400 dark:peer-checked:bg-emerald-500">
+                        <div className="relative h-5 w-5 rounded border-2 border-zinc-600 bg-zinc-800 transition-all duration-200 peer-checked:border-emerald-400 peer-checked:bg-emerald-500 peer-focus:ring-2 peer-focus:ring-emerald-500/30">
                           {showAllLocations ? <CheckIcon size={14} weight="bold" className="text-white shrink-0" /> : <span className="absolute inset-0 h-full w-full scale-0 text-white transition-transform duration-200 peer-checked:scale-100" />}
                         </div>
-                        <span className="text-sm font-medium text-zinc-700 transition-colors group-hover:text-zinc-900 dark:text-zinc-300 dark:group-hover:text-zinc-100 whitespace-nowrap">
+                        <span className="text-sm font-medium text-zinc-300 transition-colors group-hover:text-zinc-100 whitespace-nowrap">
                           Show all locations
-                          <span className="ml-1 text-xs text-zinc-500 dark:text-zinc-400">
+                          <span className="ml-1 text-xs text-zinc-400">
                             ({showAllLocations ? locationChartData.length : Math.min(6, locationChartData.length)}/{locationChartData.length})
                           </span>
                         </span>
@@ -190,7 +190,7 @@ export default function Dashboard() {
             <ErrorBoundary>
               <section>
                 <Card variant="elevated" padding="none">
-                  <CardHeader className="border-b border-zinc-100 px-6 py-4 dark:border-zinc-800">
+                  <CardHeader className="border-b border-zinc-800 px-6 py-4">
                     <div className="flex flex-col gap-4">
                       <div>
                         <CardTitle>Characters</CardTitle>
@@ -201,7 +201,7 @@ export default function Dashboard() {
                       <div className="flex flex-col gap-3 lg:flex-row lg:items-end lg:gap-3">
 
                         <div className="flex flex-1 flex-col gap-2 lg:min-w-0">
-                          <label className="px-1 text-sm font-semibold text-zinc-700 dark:text-zinc-300">
+                          <label className="px-1 text-sm font-semibold text-zinc-300">
                             Search
                           </label>
                           <SearchInput
@@ -251,7 +251,7 @@ export default function Dashboard() {
 
                   {charactersError ? (
                     <div className="p-6">
-                      <div className="rounded-xl border border-red-200 bg-red-50 p-4 text-red-700 dark:border-red-800 dark:bg-red-950 dark:text-red-400">
+                      <div className="rounded-xl border border-red-800 bg-red-950 p-4 text-red-400">
                         Failed to load characters: {charactersError.message}
                       </div>
                     </div>
